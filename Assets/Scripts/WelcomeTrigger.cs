@@ -1,3 +1,17 @@
+//Title: Collider.OnTriggerEnter(Collider)
+//Author: Unity Documentatiom
+//Date: 6 January 2026
+//Code version: Unity 6000.1
+//Availability: https://docs.unity3d.com/6000.1/Documentation/ScriptReference/Collider.OnTriggerEnter.html
+
+//Title: Collider.OnTriggerExit(Collider)
+//Author: Unity Documentation
+//Date: 14 August 2026
+//Code version: Unity 6000.5
+//Availability: https://docs.unity3d.com/6000.5/Documentation/ScriptReference/Collider.OnTriggerExit.html
+
+//This was adapted from numerous scripts from my Semester 1 project -Kailin
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,39 +19,35 @@ using UnityEngine.UI;
 
 public class WelcomeTrigger : MonoBehaviour
 {
-    public GameObject textObject;
+    public GameObject textObject; //get the panel
     
-    private bool hasPlayed = false;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    private bool hasPlayed = false; //To ensure this only appears once
+    
     private void Start()
     {
-        textObject.SetActive(false);
+        textObject.SetActive(false); //Hide the panel at the start
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.CompareTag("Player") && !hasPlayed)
+        if(other.CompareTag("Player") && !hasPlayed) //if the player enters the trigger for the first time
         {
-            hasPlayed = true;
-            textObject.SetActive(true);
+            hasPlayed = true; //this is the only time the panel appears
+            textObject.SetActive(true); //panel appears
         }
         else
         {
-            return;
+            return; //I just inlcuded this for safety
         }
     }
 
-    private void OnTriggerExit(Collider other)
+    private void OnTriggerExit(Collider other) //for when the player exits the collider
     {
         if(other.CompareTag("Player"))
         {
-            textObject.SetActive(false);
+            textObject.SetActive(false); //panel disappears
         }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
 }
