@@ -10,6 +10,12 @@
 //Code version: Unity 6000.5
 //Availability: https://docs.unity3d.com/6000.5/Documentation/ScriptReference/Collider.OnTriggerExit.html
 
+//Title: Play Sound Effects on Trigger Events ~ Unity 2022.1 Tutorial
+//Author: Chris' Tutorials
+//Date: 10 October 2022
+// Code version: Unity 2022.1.19f1
+//Availability: https://www.youtube.com/watch?v=E7-HAJ4Db64 
+
 //This was adapted from numerous scripts from my Semester 1 project -Kailin
 
 using System.Collections;
@@ -22,6 +28,13 @@ public class WelcomeTrigger : MonoBehaviour
     public GameObject textObject; //get the panel
     
     private bool hasPlayed = false; //To ensure this only appears once
+
+    AudioSource source;
+
+    void Awake()
+    {
+        source = GetComponent<AudioSource>();
+    }
     
     private void Start()
     {
@@ -34,6 +47,7 @@ public class WelcomeTrigger : MonoBehaviour
         {
             hasPlayed = true; //this is the only time the panel appears
             textObject.SetActive(true); //panel appears
+            source.Play();
         }
         else
         {
