@@ -2,13 +2,20 @@
 //Author: Unity Documentation
 //Date: 19 August 2026
 //Code version: Unity 2017.1
-//https://docs.unity3d.com/6000.5/Documentation/ScriptReference/Mathf.PingPong.html
+//Availability: https://docs.unity3d.com/6000.5/Documentation/ScriptReference/Mathf.PingPong.html
 
 //Title: Slider
 //Author: Unity Documentation
 //Date: 17 January 2019
 //Code version: Unity 2018.2
-//https://docs.unity3d.com/2018.2/Documentation/ScriptReference/UI.Slider.html
+//Availability: https://docs.unity3d.com/2018.2/Documentation/ScriptReference/UI.Slider.html
+
+//Title: WaitForSeconds
+//Author: Unity Documentation
+//Date: 21 August 2026
+//Code version: Unity 6000.0
+//Availability: https://docs.unity3d.com/6000.0/Documentation/ScriptReference/WaitForSeconds.html 
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
@@ -20,9 +27,10 @@ public class SliderMovement : MonoBehaviour
     public float winMin = 0.33f;
     public float winMax = 0.66f;
     private float movement; //movement variable (for the time delta time stuff)
-    public bool miniGameActive = true; //slider is moving
+    private bool miniGameActive = true; //slider is moving
     public GameObject winText;
     public GameObject loseText;
+    public GameObject miniGamePanel;
     
     void Start()
     {
@@ -61,6 +69,13 @@ public class SliderMovement : MonoBehaviour
                 loseText.SetActive(true);
 
             }
+
+            StartCoroutine(EndMiniGame());
         }
+    }
+    IEnumerator EndMiniGame()
+    {
+        yield return new WaitForSeconds(3f);
+        miniGamePanel.SetActive(false);
     }
 }
