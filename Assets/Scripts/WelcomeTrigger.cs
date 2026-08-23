@@ -43,7 +43,7 @@ public class WelcomeTrigger : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.CompareTag("Player") && !hasPlayed) //if the player enters the trigger for the first time
+        if(!hasPlayed) //if the player enters the trigger for the first time
         {
             hasPlayed = true; //this is the only time the panel appears
             textObject.SetActive(true); //panel appears
@@ -57,10 +57,9 @@ public class WelcomeTrigger : MonoBehaviour
 
     private void OnTriggerExit(Collider other) //for when the player exits the collider
     {
-        if(other.CompareTag("Player"))
-        {
+    
             textObject.SetActive(false); //panel disappears
-        }
+        
     }
 
 
