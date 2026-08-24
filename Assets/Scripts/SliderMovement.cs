@@ -27,15 +27,16 @@ public class SliderMovement : MonoBehaviour
     public float winMin = 0.33f;
     public float winMax = 0.66f;
     private float movement; //movement variable (for the time delta time stuff)
-    private bool miniGameActive = true; //slider is moving
+    private bool miniGameActive = false; //slider is moving
     public GameObject winText;
     public GameObject loseText;
     public GameObject miniGamePanel;
     
     void Start()
     {
-        winText.SetActive(false);
+        winText.SetActive(false); //when game starts the mini game is not active
         loseText.SetActive(false);
+        miniGamePanel.SetActive(false);
         slider.minValue = 0f; //set minimum value
         slider.maxValue = 1f; // set maximum value
         slider.value = 0f; // set current or starting value
@@ -52,8 +53,22 @@ public class SliderMovement : MonoBehaviour
         slider.value = Mathf.PingPong(movement, 1f); //moves back and forth
     }
 
-    public void OnSpace(InputAction.CallbackContext context) //call space input - this isn't working, so adjust the project settings and use the old input system for this
+    public void StartMiniGame() //call to start the mini game
     {
+        miniGameActive = true;
+        movement = 0f;
+        slider.value = 0f;
+        winText.SetActive(false); 
+        loseText.SetActive(false);
+        miniGamePanel.SetActive(true);
+    }
+
+    public void OnSpace(InputAction.CallbackContext context) //call space input 
+    {
+        if(!miniGameActive)
+        {
+            return;
+        }
         if(context.performed) //if spacebar is pressed
         {
             miniGameActive = false; //stop movement
