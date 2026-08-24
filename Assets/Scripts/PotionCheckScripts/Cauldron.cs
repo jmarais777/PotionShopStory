@@ -1,89 +1,74 @@
-//using UnityEngine;
-//using System.Collections.Generic;
-//using UnityEngine.InputSystem;
-//using System.Linq;
+using UnityEngine;
+using System.Collections.Generic;
+using System.Linq;
+using UnityEngine.InputSystem;
 
-//[RequireComponent(typeof(Collider))]
-//public class Cauldron : MonoBehaviour
-//{
+[RequireComponent(typeof(Collider))]
+public class Cauldron : MonoBehaviour
+{
+    [Header("Player Input from Action Map")]
+    [SerializeField] private InputActionReference _testAction;
 
-    //[Header("Player Input from Action Map")]
-    //[SerializeField] private InputActionReference _testAction;
+    [Header("Player in Range Checker")]
+    [SerializeField] private string playerTag = "Player";
+    private bool _isPlayerInRange = false;
 
-    //[Header("Player in Range Checker")]
-    //[SerializeField] private string playerTag = "Player";
-    //private bool _isPlayerInRange = false;
+    [Header("Recipe to Test Against")]
+    [SerializeField] private PotionRecipe currentRecipe; 
 
-    //[Header("Ingredients in Cauldron")]
-    //[SerializeField] private string ingredientATag = "IngredientA";
-    //[SerializeField] private string ingredientBTag = "IngredientB";
+    private List<GameObject> ingredientsInCauldron = new List<GameObject>();
 
-    //[Header("Recipe to Test Against")]
-    //[SerializeField] private PotionRecipe currentRecipe;
+    private void OnEnable()
+    {
+        _testAction.action.performed += OnInteractPerformed;
+        _testAction.action.Enable();
+    }
 
-   // private List<PotionIngredients> ingredientsInCauldron = new List<PotionIngredients>();
+    private void OnDisable()
+    {
+        _testAction.action.performed -= OnInteractPerformed;
+        _testAction.action.Disable();
+    }
 
-    //private void OnEnable()
-    //{
-    //    _testAction.action.performed += OnInteractPerformed; //The method will run when Test is engaged
-    //    _testAction.action.Enable();
-    //}
-
-    //private void OnDisable()
-    //{
-     //   _testAction.action.performed -= OnInteractPerformed; 
-     //   _testAction.action.Disable();
-    //}
-
-    //private void OnTriggerEnter(Collider other)
-    //{
-    //   if (other.CompareTag(playerTag)) //Verifies against the player's Tag
-     //   {
-     //       _isPlayerInRange = true; //Sets the bool to true, so that the Interact will work
-     //       return;
-     //   }
-
-     //  PotionIngredients ingredient = other.GetComponent<PotionIngredients>();
-     //   if (ingredient != null && !ingredientsInCauldron.Contains(ingredient))
-     //   {
-      //     ingredientsInCauldron.Add(ingredient);
-      //  }
-    //}
-
-   // private void OnTriggerExit(Collider other)                                      
-   // {
-     //  if (other.CompareTag(playerTag)) //Checks to see if the player has left the collider's range
-      //  {
-       //     _isPlayerInRange = false; //Sets the bool to false, preventing the ingredient from being processed
-      //      return;
-      //  }
-
-   // }
-
-   // private void OnInteractPerformed(InputAction.CallbackContext context)
-    //{
-    //    if (!_isPlayerInRange) return; // The checker 
-     //   if (currentRecipe == null) return;
-
-     //   bool success = CheckRecipe(currentRecipe);
-        // The success message, and calling the minigame will come after this
-    //}
-
-   // private bool CheckRecipe(PotionRecipe recipe)
-   // {
-
-    /*    if (ingredientsInCauldron.Count != recipe.requiredIngredients.Count)
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag(playerTag))
         {
-            return false;
+            _isPlayerInRange = true;
+            return;
         }
 
-    ^ This would make the check fail if there are extra ingredients, don't think we need this level of strictness? Can always implement later.
-    */
+        if (!ingredientsInCauldron.Contains(other.gameObject))
+        {
+            ingredientsInCauldron.Add(other.gameObject);
+        }
 
-        //List<(IngredientType type, ProcessingState state)> cauldronIngredientsPool = ingredientsInCauldron // creates a new list so that the actual game objects in the cauldron aren't affected
-        //.Select(i => (i.Type, i.State)) // this is a function from LINQ which is a data handler, basically convertin the ingredients into type and state pairs so the data is easier to work with
-       // .ToList(); // changes it to a basic list
+        Debug.Log("Ingredient entered: " + other.gameObject.name); // this was just for testing purposes to ensure it was detected correctly
+    }
 
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag(playerTag))
+        {
+            _isPlayerInRange = false;
+            return;
+        }
 
-    //}
-//}
+        ingredientsInCauldron.Remove(other.gameObject);
+    }
+
+    private void OnInteractPerformed(InputAction.CallbackContext context)
+    {
+        if (!_isPlayerInRange) return;
+        if (currentRecipe == null) return; // makin sure there is a recipe attached
+
+        ingredientsInCauldron.RemoveAll(g => g == null || !g.activeInHierarchy); // getting rid of disabled game objects
+
+        List<string> namesInCauldron = ingredientsInCauldron.Select(g => g.name).ToList();
+
+        bool success = currentRecipe.requiredIngredientNames.All(required => namesInCauldron.Contains(required));
+//                       && namesInCauldron.Count == currentRecipe.requiredIngredientNames.Count;
+
+        Debug.Log(success ? $"Success! You have all you need for a {currentRecipe.potionName}" : "Brewing failed.");
+    }
+}
