@@ -35,7 +35,7 @@ public class SliderMovement : MonoBehaviour
     
     void Start()
     {
-        //successfulPotion.SetActive(false);
+        successfulPotion.SetActive(false);
         winText.SetActive(false); //when game starts the mini game is not active
         loseText.SetActive(false);
         miniGamePanel.SetActive(false);
