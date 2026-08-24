@@ -95645,25 +95645,28 @@ MonoBehaviour:
   m_GameObject: {fileID: 2022898538}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bd2cdaee7cc6452428fa0a5237e211e6, type: 3}
+  m_Script: {fileID: 11500000, guid: 30a96ecdf65075942b8ea5d803dcf337, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AndyFPController
-  moveSpeed: 5
+  baseSpeed: 5
+  maxSpeed: 10
+  acceleration: 2
   gravity: -9.81
-  jumpHeight: 1.5
+  currentSpeed: 0
+  antiBump: 4
+  moveAcceleration: 20
+  moveDeceleration: 12
   cameraTransform: {fileID: 1955088820}
   lookSensitivity: 2
   verticalLookLimit: 90
-  bulletPrefab: {fileID: 0}
-  gunPoint: {fileID: 0}
-  bulletForce: 500
-  crouchHeight: 1
-  standHeight: 2
-  crouchSpeed: 2.5
+  lookSmoothTime: 0.05
+  enableHeadBob: 1
+  bobFrequency: 1.8
+  bobAmplitude: 0.05
+  bobSideAmplitude: 0.03
+  bobSmoothTime: 0.1
   pickupRange: 3
   holdPoint: {fileID: 1972701291}
-  throwForce: 10
-  throwUpwardBoost: 1
 --- !u!43 &2040485075
 Mesh:
   m_ObjectHideFlags: 0
