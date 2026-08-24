@@ -64,7 +64,7 @@ public class Cauldron : MonoBehaviour
 
         ingredientsInCauldron.RemoveAll(g => g == null || !g.activeInHierarchy); // getting rid of disabled game objects
 
-        List<string> namesInCauldron = ingredientsInCauldron.Select(g => g.name).ToList();
+        List<string> namesInCauldron = ingredientsInCauldron.Select(g => g.name.Replace(" (1)", "")).ToList(); // Makes sure even copied objects register by removing the (1) at the end of its name
 
         bool success = currentRecipe.requiredIngredientNames.All(required => namesInCauldron.Contains(required));
 //                       && namesInCauldron.Count == currentRecipe.requiredIngredientNames.Count;
