@@ -16,6 +16,9 @@ public class Cauldron : MonoBehaviour
     [Header("Recipe to Test Against")]
     [SerializeField] private PotionRecipe currentRecipe; 
 
+    [Header("MiniGame")]
+    [SerializeField] private SliderMovement sliderMovement;
+
     private List<GameObject> ingredientsInCauldron = new List<GameObject>();
 
     private void OnEnable()
@@ -69,6 +72,19 @@ public class Cauldron : MonoBehaviour
         bool success = currentRecipe.requiredIngredientNames.All(required => namesInCauldron.Contains(required));
 //                       && namesInCauldron.Count == currentRecipe.requiredIngredientNames.Count;
 
-        Debug.Log(success ? $"Success! You have all you need for a {currentRecipe.potionName}" : "Brewing failed.");
+        if(success)
+        {
+            Debug.Log($"Success! You have all you need for a {currentRecipe.potionName}");
+            if(sliderMovement != null)
+            {
+                sliderMovement.StartMiniGame();
+
+            }
+        }
+        else
+        {
+            Debug.Log("Brewing failed.");
+        }
+       //Debug.Log(success ? $"Success! You have all you need for a {currentRecipe.potionName}" : "Brewing failed.");
     }
 }
