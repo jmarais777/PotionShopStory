@@ -190,5 +190,10 @@ public class FPController : MonoBehaviour
         }
     }
 
+    public void OnTest(InputAction.CallbackContext context)
+    {
+        
+    }
+
 }
     
