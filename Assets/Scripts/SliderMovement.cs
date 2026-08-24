@@ -31,9 +31,11 @@ public class SliderMovement : MonoBehaviour
     public GameObject winText;
     public GameObject loseText;
     public GameObject miniGamePanel;
+    [SerializeField] private GameObject successfulPotion;
     
     void Start()
     {
+        successfulPotion.SetActive(false);
         winText.SetActive(false); //when game starts the mini game is not active
         loseText.SetActive(false);
         miniGamePanel.SetActive(false);
@@ -73,10 +75,12 @@ public class SliderMovement : MonoBehaviour
         {
             miniGameActive = false; //stop movement
             Debug.Log("Space pressed!");
+            bool won = false;
             if(slider.value >= winMin && slider.value <= winMax) //if slider is in middle
             {
                 Debug.Log("You win!");
                 winText.SetActive(true);
+                won = true;
             }
             else
             {
@@ -85,12 +89,16 @@ public class SliderMovement : MonoBehaviour
 
             }
 
-            StartCoroutine(EndMiniGame());
+            StartCoroutine(EndMiniGame(won));
         }
     }
-    IEnumerator EndMiniGame()
+    IEnumerator EndMiniGame(bool won)
     {
         yield return new WaitForSeconds(3f);
         miniGamePanel.SetActive(false);
+        if(won && successfulPotion != null)
+        {
+            successfulPotion.SetActive(true);
+        }
     }
 }
