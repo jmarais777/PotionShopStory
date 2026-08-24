@@ -1,7 +1,9 @@
 using UnityEngine;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine.InputSystem;
+using TMPro;
 
 [RequireComponent(typeof(Collider))]
 public class Cauldron : MonoBehaviour
@@ -18,6 +20,10 @@ public class Cauldron : MonoBehaviour
 
     [Header("MiniGame")]
     [SerializeField] private SliderMovement sliderMovement;
+
+    [Header("Outcome Display")]
+    [SerializeField] private TextMeshProUGUI outcomeText;
+    [SerializeField] private float outcomeDisplayDuration = 2f;
 
     private List<GameObject> ingredientsInCauldron = new List<GameObject>();
 
@@ -75,16 +81,35 @@ public class Cauldron : MonoBehaviour
         if(success)
         {
             Debug.Log($"Success! You have all you need for a {currentRecipe.potionName}");
+            ShowOutcome($"Wonderful! You have all you need for a {currentRecipe.potionName}!");
             if(sliderMovement != null)
             {
-                sliderMovement.StartMiniGame();
+                foreach (GameObject i in ingredientsInCauldron)
+                {
+                    i.SetActive(false);
+                }
 
+                sliderMovement.StartMiniGame();
             }
         }
         else
         {
+            ShowOutcome("Brewing failed. Check the recipe again.");
             Debug.Log("Brewing failed.");
         }
-       //Debug.Log(success ? $"Success! You have all you need for a {currentRecipe.potionName}" : "Brewing failed.");
+
+    }
+
+    private void ShowOutcome(string message)
+    {
+        outcomeText.text = message;
+        outcomeText.gameObject.SetActive(true);
+        StartCoroutine(HideResult());
+    }
+
+    private IEnumerator HideResult()
+    {
+        yield return new WaitForSeconds(outcomeDisplayDuration);
+        outcomeText.gameObject.SetActive(false);
     }
 }
