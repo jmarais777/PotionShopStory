@@ -35,6 +35,11 @@ public class FPController : MonoBehaviour
     private Vector3 cameraNeutralLocalPos;
     private Vector3 bobVelocity;
 
+    [Header("Pickup Settings")]
+    public float pickupRange = 3f;
+    public Transform holdPoint;
+    private PickUpObject heldObject;
+
     private CharacterController controller;
     private Vector2 moveInput;
     private Vector2 lookInput;
@@ -59,7 +64,10 @@ public class FPController : MonoBehaviour
     private void Update()
     {
         HandleMovement();
-        
+        if (heldObject != null)
+        {
+            heldObject.MoveToHoldPoint(holdPoint.position);
+        }
     }
 
     private void LateUpdate()
@@ -155,6 +163,31 @@ public class FPController : MonoBehaviour
         }
 
         cameraTransform.localPosition = Vector3.SmoothDamp(cameraTransform.localPosition, targetLocalPos, ref bobVelocity, bobSmoothTime);
+    }
+
+    public void OnPickUp(InputAction.CallbackContext context)
+    {
+        if (!context.performed) return;
+        if (heldObject == null)
+        {
+            Ray ray = new Ray(cameraTransform.position,
+            cameraTransform.forward);
+            if (Physics.Raycast(ray, out RaycastHit hit, pickupRange, ~0, QueryTriggerInteraction.Ignore))
+            {
+                PickUpObject pickUp =
+                hit.collider.GetComponentInParent<PickUpObject>();
+                if (pickUp != null)
+                {
+                    pickUp.PickUp(holdPoint);
+                    heldObject = pickUp;
+                }
+            }
+        }
+        else
+        {
+            heldObject.Drop();
+            heldObject = null;
+        }
     }
 
 }
