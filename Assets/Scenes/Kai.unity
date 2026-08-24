@@ -38516,6 +38516,7 @@ MonoBehaviour:
   winText: {fileID: 1679721338}
   loseText: {fileID: 953493497}
   miniGamePanel: {fileID: 1240992513}
+  successfulPotion: {fileID: 1463414647}
 --- !u!4 &748525342
 Transform:
   m_ObjectHideFlags: 0
