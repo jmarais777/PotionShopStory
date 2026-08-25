@@ -89705,7 +89705,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4442482746840965886, guid: 9774f6ac433dbcc41a95992143a4d2a3, type: 3}
       propertyPath: lookSensitivity
-      value: 1
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 4811533357860295623, guid: 9774f6ac433dbcc41a95992143a4d2a3, type: 3}
       propertyPath: m_LocalPosition.x
