@@ -88,6 +88,8 @@ public class FPController : MonoBehaviour
 
     public void HandleMovement()
     {
+        
+        // if (Input.Get.Axis("Vertical")) > 0.1 for gamepad implementation
 
         if (Keyboard.current.wKey.isPressed) // The player gets faster the longer they move forward.
         {
