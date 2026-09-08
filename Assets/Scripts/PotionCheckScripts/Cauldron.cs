@@ -91,8 +91,8 @@ public class Cauldron : MonoBehaviour
                 {
                     i.SetActive(false);
                 }
+                StartCoroutine(StartMiniGameAfterBreak());
 
-                sliderMovement.StartMiniGame();
             }
         }
         else
@@ -101,6 +101,15 @@ public class Cauldron : MonoBehaviour
             Debug.Log("Brewing failed.");
         }
 
+    }
+
+    private IEnumerator StartMiniGameAfterBreak()
+    {
+        yield return new WaitForSeconds(2f);
+        if (sliderMovement != null)
+        {
+            sliderMovement.StartMiniGame();
+        }
     }
 
     private void ShowOutcome(string message)
