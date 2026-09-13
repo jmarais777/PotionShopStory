@@ -8,6 +8,7 @@ using System.Collections.Generic;
 //Code version: Unity 2020.3.32f1
 //Availability: https://www.youtube.com/watch?v=x2qiWGcLku0
 
+//NOTE: all of the potion orders have the tag "AirPotion" so no matter what order you add the potions to the crate, the letters will still be removed sequentially. This shouldn't have a huge effect on gameplay but might feel "sloppy"
 
 public class LetterRemove : MonoBehaviour
 {
