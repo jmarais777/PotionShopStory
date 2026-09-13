@@ -1,4 +1,6 @@
+//I asked my brother for healp with the arrays and "for" loops
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.InputSystem;
 
 public class LetterPileInteraction : MonoBehaviour
@@ -27,19 +29,6 @@ public class LetterPileInteraction : MonoBehaviour
         for (int i = 0; i < letterUI.Length; i++) //hides all letter UI
         {
             letterUI[i].SetActive(false);
-        }
-
-        for (int i = 0; i < physicalLetters.Length; i++)//make sure first letter is active
-        {
-            if (i == 0)
-            {
-                physicalLetters[i].SetActive(true);
-            }
-            else
-            {
-                physicalLetters[i].SetActive(false);
-
-            }
         }
 
         currentLetter = 0;
@@ -125,7 +114,6 @@ public class LetterPileInteraction : MonoBehaviour
         currentLetter++; //move to the next letter
         if(currentLetter < physicalLetters.Length) //if there is another letter, activate it
         {
-            physicalLetters[currentLetter].SetActive(true);
             if (playerInRange) //player can now interact with the next letter
             {
                 buttonObject.SetActive(true);
@@ -139,10 +127,5 @@ public class LetterPileInteraction : MonoBehaviour
         }
         letterUIOpen = false;
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
+

@@ -1,9 +1,3 @@
-//Title: GameObject.activeSelf
-//Author: Unity Documentation
-//Date: 10 September 2026
-//Code version: Unity 6000.5
-//Availability: https://docs.unity3d.com/6000.5/Documentation/ScriptReference/GameObject-activeSelf.html 
-
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,27 +6,23 @@ using UnityEngine.InputSystem;
 
 public class InteractionPrompts : MonoBehaviour
 {
-    [Header("UI Objects")] //I added Headers to clear things up
     public GameObject buttonObject; // get the buttons
-    public GameObject letterOne; //the letter UI
+    
+    //public GameObject recipePages; //refers to the UI to summon
 
-    [Header("Physical Object")] // refers to the "physical" letter
-    public GameObject realFirstLetter;
+    //private bool playerInBox = false; //condition related to box collider
 
-    private bool playerInBox = false; //condition related to box collider
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         buttonObject.SetActive(false); //prompts start off invisible
-        letterOne.SetActive(false); //the letter UI is invisible
+        //recipePages.SetActive(false); //the recipe UI is invisible
     }
 
     private void OnTriggerEnter(Collider other) //when the player enters the box collider
     {
         if(other.CompareTag("Player")) //specifically the player
         {
-            playerInBox = true; //condition is met
+            //playerInBox = true; //condition is met
             buttonObject.SetActive(true); //prompts appear
         }
         else
@@ -45,19 +35,19 @@ public class InteractionPrompts : MonoBehaviour
     {
         if(other.CompareTag("Player")) //specifically the playeer
         {
-           playerInBox = false; //condition is not met
+          // playerInBox = false; //condition is not met
             buttonObject.SetActive(false); //prompts disappear
-            letterOne.SetActive(false); //letter UI disappears/will not work
+           // recipePages.SetActive(false); //recipe UI disappears/will not work
         }
 }
 
-public void OnEButton(InputAction.CallbackContext context) //when the E button is pressed (keyboard)
-{
-    if(context.performed && playerInBox && realFirstLetter != null && realFirstLetter.activeSelf) //if the E button is pressed, and the player is in the box collider, and if the "physical letter" exists
-    {
-        letterOne.SetActive(!letterOne.activeSelf); //the letter UI is activated
-    }
+//public void OnEButton(InputAction.CallbackContext context) //when the E button is pressed (keyboard)
+//{
+    //if(context.performed && playerInBox) //if the E button is pressed, and the player is in the box collider, and if the "physical letter" exists
+    //{
+      //  recipePages.SetActive(true);
+   // }
 
-}
+//}
 
 }
