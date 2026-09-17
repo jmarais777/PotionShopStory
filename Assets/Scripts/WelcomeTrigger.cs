@@ -22,6 +22,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.InputSystem;
 
 public class WelcomeTrigger : MonoBehaviour
 {
@@ -55,16 +56,27 @@ public class WelcomeTrigger : MonoBehaviour
         }
     }
 
-    private void OnTriggerExit(Collider other) //for when the player exits the collider
+public void OnEButton(InputAction.CallbackContext context) //when the E button is pressed (keyboard)
+{
+    if(context.performed && hasPlayed) //if the E button is pressed, and if the player has not performed this action 
     {
-        if(other.CompareTag("Player"))
-        {
-            textObject.SetActive(false); //panel disappears
+        textObject.SetActive(false);
+
+    }
+
+}
+    
+
+   // private void OnTriggerExit(Collider other) //for when the player exits the collider
+  //  {
+    //    if(other.CompareTag("Player"))
+     //   {
+      //      textObject.SetActive(false); //panel disappears
             
-        }
+     //   }
     
         
-    }
+   // }
 
 
 }
