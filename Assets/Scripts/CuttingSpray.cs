@@ -22,11 +22,13 @@ public class CuttingSpray : MonoBehaviour
         {
             ingredientAOnBoard = true;
             ingredientBOnBoard = false;
+            //Debug.Log("yellow");
         }
         else if(other.CompareTag("IngredientB")) //if the blue ingredient is on the cutting board
         {
             ingredientBOnBoard = true;
             ingredientAOnBoard = false;
+            //Debug.Log("blue");
         }
     }
 
