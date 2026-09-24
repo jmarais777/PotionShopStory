@@ -337104,6 +337104,8 @@ GameObject:
   - component: {fileID: 1848081515}
   - component: {fileID: 1848081514}
   - component: {fileID: 1848081513}
+  - component: {fileID: 1848081516}
+  - component: {fileID: 1848081517}
   m_Layer: 0
   m_Name: MugBase
   m_TagString: Untagged
@@ -337204,6 +337206,42 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1848081511}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!65 &1848081516
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1848081511}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2.56, y: 8.8, z: 1}
+  m_Center: {x: 0.82, y: 4.64, z: 0}
+--- !u!114 &1848081517
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1848081511}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4fe788c8f6f9bcb459e9860f3e326f15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BrewTea
+  _interactAction: {fileID: 3786611123462103431, guid: 658aee06180087c4893416d618922590, type: 3}
+  playerTag: Player
+  currentRecipe: {fileID: 11400000, guid: 1a13658ff61927c4ca6366ad573bde2e, type: 2}
 --- !u!1 &1848440331
 GameObject:
   m_ObjectHideFlags: 0
