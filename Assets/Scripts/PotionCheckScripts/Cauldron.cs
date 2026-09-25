@@ -66,6 +66,20 @@ public class Cauldron : MonoBehaviour
         ingredientsInCauldron.Remove(other.gameObject);
     }
 
+    private string PlainName(string rawName) // to remove the (1) and (2) etc. from the end of the game object names, no matter how many duplicates
+    {
+        int index = rawName.IndexOf(" (");
+
+        if (index >= 0)
+        {
+            return rawName.Substring(0, index);
+        }
+        else
+        {
+            return rawName;
+        }
+    }
+
     private void OnInteractPerformed(InputAction.CallbackContext context)
     {
         if (!_isPlayerInRange) return;
@@ -75,11 +89,11 @@ public class Cauldron : MonoBehaviour
 
         ingredientsInCauldron.RemoveAll(g => g == null || !g.activeInHierarchy); // getting rid of disabled game objects
 
-        List<string> namesInCauldron = ingredientsInCauldron.Select(g => g.name.Replace(" (1)", "")).ToList(); // Makes sure even copied objects register by removing the (1) at the end of its name
+        List<string> namesInCauldron = ingredientsInCauldron.Select(g => PlainName(g.name)).ToList(); 
 
 
-        bool success = currentRecipe.requiredIngredientNames.All(required => namesInCauldron.Contains(required));
-//                       && namesInCauldron.Count == currentRecipe.requiredIngredientNames.Count;
+        bool success = currentRecipe.requiredIngredientNames.All(required => namesInCauldron.Contains(required)) && (namesInCauldron.Count == currentRecipe.requiredIngredientNames.Count);
+//                     && namesInCauldron.Count == currentRecipe.requiredIngredientNames.Count;
 
         if(success)
         {
