@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a86b7ce1503355f4cb0bb747cd4d2630, type: 3}
+  m_Name: Loose Leaf Tea
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueSO
+  lines:
+  - speaker: {fileID: 11400000, guid: f1649f4c6e594e54e8842fea9dd6820c, type: 2}
+    text: "He can\u2019t find out it\u2019s not loose leaf\u2026 (giggles) but it
+      would be funny to see the look on his face."
+  nextconvo: []
