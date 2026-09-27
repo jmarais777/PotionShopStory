@@ -18,6 +18,16 @@ public class BrewTea : MonoBehaviour
     [Header("Recipe to Test Against")]
     [SerializeField] private PotionRecipe currentRecipe;
 
+    [Header("Kettle Boil Audio")]
+    [SerializeField] private AudioSource KettleBoil;
+
+    [Header("GameObjects")]
+    [SerializeField] private GameObject Brewing;
+    [SerializeField] private GameObject Brewed;
+    [SerializeField] private GameObject MagicKettle;
+
+    private Vector3 _targetPosition = new Vector3(1000f, 1000f, 1000f);
+
     private List<GameObject> ingredientsInCup = new List<GameObject>();
 
     private void OnEnable()
@@ -91,6 +101,17 @@ public class BrewTea : MonoBehaviour
         if (success)
         {
             Debug.Log($"Success! You have all you need for a {currentRecipe.potionName}");
+            KettleBoil.Play();
+        }
+        else if (namesInCauldron.Contains("kettle"))
+            {
+            Brewing.transform.position = _targetPosition;
+            Brewed.SetActive(true);
+             foreach (GameObject i in ingredientsInCup)
+        {
+            i.SetActive(false);
+        }
+            MagicKettle.SetActive(true);
         }
         else
         {

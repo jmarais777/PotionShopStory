@@ -92,8 +92,9 @@ public class Cauldron : MonoBehaviour
         List<string> namesInCauldron = ingredientsInCauldron.Select(g => PlainName(g.name)).ToList(); 
 
 
-        bool success = currentRecipe.requiredIngredientNames.All(required => namesInCauldron.Contains(required)) && (namesInCauldron.Count == currentRecipe.requiredIngredientNames.Count);
+        bool success = currentRecipe.requiredIngredientNames.All(required => namesInCauldron.Contains(required));
 //                     && namesInCauldron.Count == currentRecipe.requiredIngredientNames.Count;
+//                     && (namesInCauldron.Count() == currentRecipe.requiredIngredientNames.Count())
 
         if(success)
         {
