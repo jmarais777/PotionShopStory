@@ -29,6 +29,8 @@ public class RedLetterUI : MonoBehaviour
 
     private bool hasPlayed = false; //to ensure this only happens once
 
+    [SerializeField] private ParticleSystem _smoke;
+
     AudioSource source; 
 
     void Awake()
@@ -78,6 +80,7 @@ public void OnEButton(InputAction.CallbackContext context) //when the E button i
         auggieTake.SetActive(true); //Auggie's dialogue appears
         redLetter.SetActive(false); //letter disappears
         source.Play(); //play woosh sound
+        _smoke.Play();
     }
 
 }
