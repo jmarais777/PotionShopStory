@@ -1,3 +1,15 @@
+//Title: ParticleSystem
+//Author: Unity Documentation
+//Date: 15 September 2026
+//Code version: Unity 6000.5
+//Availability: https://docs.unity3d.com/6000.5/Documentation/ScriptReference/ParticleSystem.html
+
+//Title: ParticleSystemStopBehavior
+//Author: Unity Documentation
+//Date: 27 September 2026
+//Code version: Unity 6000.5
+//Availability: https://docs.unity3d.com/6000.0/Documentation/ScriptReference/ParticleSystemStopBehavior.html
+
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
@@ -26,9 +38,19 @@ public class BrewTea : MonoBehaviour
     [SerializeField] private GameObject Brewed;
     [SerializeField] private GameObject MagicKettle;
 
+    [SerializeField] private ParticleSystem teaSteam; 
+
     private Vector3 _targetPosition = new Vector3(1000f, 1000f, 1000f);
 
     private List<GameObject> ingredientsInCup = new List<GameObject>();
+
+    private void Start()
+    {
+        if (teaSteam != null)
+        {
+            teaSteam.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+        }
+    }
 
     private void OnEnable()
     {
@@ -102,6 +124,14 @@ public class BrewTea : MonoBehaviour
         {
             Debug.Log($"Success! You have all you need for a {currentRecipe.potionName}");
             KettleBoil.Play();
+            if (teaSteam != null)
+            {
+                teaSteam.Play();
+
+            }
+
+            StartCoroutine(StopSteamWhenWhistlingEnds());
+            
         }
         else if (namesInCauldron.Contains("kettle"))
             {
@@ -118,5 +148,17 @@ public class BrewTea : MonoBehaviour
             Debug.Log("Brewing failed.");
         }
 
+    }
+
+    private IEnumerator StopSteamWhenWhistlingEnds()
+    {
+        while(KettleBoil.isPlaying)
+        {
+            yield return null;
+        }
+        if (teaSteam != null)
+        {
+            teaSteam.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+        }
     }
 }
