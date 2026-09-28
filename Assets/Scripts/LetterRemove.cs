@@ -13,12 +13,18 @@ using System.Collections.Generic;
 public class LetterRemove : MonoBehaviour
 {
     public LetterPileInteraction letterPile;
+    public GameObject dollarSign;
 
     AudioSource source;
 
     void Awake()
     {
         source = GetComponent<AudioSource>();
+    }
+    
+    void Start()
+    {
+        dollarSign.SetActive(false);
     }
     
 
@@ -28,7 +34,15 @@ public class LetterRemove : MonoBehaviour
         {
             letterPile.RemoveCurrentLetter(); //refers to the romove letter function in the LetterPileInteraction script - it, well, removes the letter
             source.Play();        
+            dollarSign.SetActive(true);
+            StartCoroutine(HideDollarSign());
         }
+    }
+
+    IEnumerator HideDollarSign()
+    {
+        yield return new WaitForSeconds(1.5f);
+        dollarSign.SetActive(false);
     }
 
 
