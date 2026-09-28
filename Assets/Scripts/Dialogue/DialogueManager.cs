@@ -22,6 +22,9 @@ public class DialogueManager : MonoBehaviour
     public TMP_Text actorName;
     public TMP_Text dialogueText;
 
+    [Header("Particle Effects")]
+    [SerializeField] private ParticleSystem glowParticles;
+
     public bool isDialogueActive;
 
     private DialogueSO currentDialogue;
@@ -116,5 +119,14 @@ public class DialogueManager : MonoBehaviour
         canvasGroup.alpha = 0;
         canvasGroup.interactable = false;
         canvasGroup.blocksRaycasts = false;
+
+/*        if(currentDialogue = "Waking Up")
+        {
+            if (glowParticles != null)
+            {
+               glowParticles.Play(); 
+            }
+            
+        } */
     }
 }
