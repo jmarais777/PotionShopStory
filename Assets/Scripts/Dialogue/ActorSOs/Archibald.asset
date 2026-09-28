@@ -13,5 +13,4 @@ MonoBehaviour:
   m_Name: Archibald
   m_EditorClassIdentifier: Assembly-CSharp::ActorSO
   actorName: Master Augi
-  portrait: {fileID: 0}
-  side: 
+  portrait: {fileID: 21300000, guid: b25e1758aff367149b16258c6969f2da, type: 3}

@@ -126,6 +126,10 @@ public class FPController : MonoBehaviour
 
     public void HandleLook()
     {
+        if (DialogueManager.Instance.isDialogueActive) // checking if dialogue is active
+        {
+            return;
+        }
 
         currentLookInput = Vector2.SmoothDamp(currentLookInput, lookInput, ref lookInputVelocity, lookSmoothTime); // Smoothing the input from the player
 
@@ -183,6 +187,11 @@ public class FPController : MonoBehaviour
                     pickUp.PickUp(holdPoint);
                     heldObject = pickUp;
                 }
+            }
+
+            if (heldObject.name == "Teabag")
+            {
+                heldObject.GetComponent<DialogueTrigger>().Play();
             }
         }
         else

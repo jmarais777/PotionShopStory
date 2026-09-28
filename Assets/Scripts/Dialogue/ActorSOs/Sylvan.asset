@@ -13,5 +13,4 @@ MonoBehaviour:
   m_Name: Sylvan
   m_EditorClassIdentifier: Assembly-CSharp::ActorSO
   actorName: Sylvan
-  portrait: {fileID: 0}
-  side: 
+  portrait: {fileID: 21300000, guid: 8fdc1f1889189c24a8491c64764d817d, type: 3}

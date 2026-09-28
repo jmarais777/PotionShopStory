@@ -13,5 +13,4 @@ MonoBehaviour:
   m_Name: Edwin
   m_EditorClassIdentifier: Assembly-CSharp::ActorSO
   actorName: Edwin
-  portrait: {fileID: 0}
-  side: 
+  portrait: {fileID: 21300000, guid: b8cf1031d17544e49941c4928707e59e, type: 3}

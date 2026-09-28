@@ -154,6 +154,15 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""DialogueAdvance"",
+                    ""type"": ""Button"",
+                    ""id"": ""7813e411-5a3b-466d-afb6-5e4538c49c44"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -354,6 +363,39 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""action"": ""Divination/PotionTest"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""79e672f1-968c-42e5-9a1d-e9bccda820e0"",
+                    ""path"": ""<Keyboard>/enter"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""DialogueAdvance"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8b4cdeb3-bfec-4011-810c-cb82abe3d87f"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""DialogueAdvance"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""fd623605-9799-4e5f-9181-4b78c5f3d38b"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""DialogueAdvance"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -369,6 +411,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         m_Player_PickUp = m_Player.FindAction("Pick-Up", throwIfNotFound: true);
         m_Player_PutDown = m_Player.FindAction("Put-Down", throwIfNotFound: true);
         m_Player_DivinationPotionTest = m_Player.FindAction("Divination/PotionTest", throwIfNotFound: true);
+        m_Player_DialogueAdvance = m_Player.FindAction("DialogueAdvance", throwIfNotFound: true);
     }
 
     ~@Controls()
@@ -456,6 +499,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_PickUp;
     private readonly InputAction m_Player_PutDown;
     private readonly InputAction m_Player_DivinationPotionTest;
+    private readonly InputAction m_Player_DialogueAdvance;
     /// <summary>
     /// Provides access to input actions defined in input action map "Player".
     /// </summary>
@@ -495,6 +539,10 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Player/DivinationPotionTest".
         /// </summary>
         public InputAction @DivinationPotionTest => m_Wrapper.m_Player_DivinationPotionTest;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/DialogueAdvance".
+        /// </summary>
+        public InputAction @DialogueAdvance => m_Wrapper.m_Player_DialogueAdvance;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -542,6 +590,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @DivinationPotionTest.started += instance.OnDivinationPotionTest;
             @DivinationPotionTest.performed += instance.OnDivinationPotionTest;
             @DivinationPotionTest.canceled += instance.OnDivinationPotionTest;
+            @DialogueAdvance.started += instance.OnDialogueAdvance;
+            @DialogueAdvance.performed += instance.OnDialogueAdvance;
+            @DialogueAdvance.canceled += instance.OnDialogueAdvance;
         }
 
         /// <summary>
@@ -574,6 +625,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @DivinationPotionTest.started -= instance.OnDivinationPotionTest;
             @DivinationPotionTest.performed -= instance.OnDivinationPotionTest;
             @DivinationPotionTest.canceled -= instance.OnDivinationPotionTest;
+            @DialogueAdvance.started -= instance.OnDialogueAdvance;
+            @DialogueAdvance.performed -= instance.OnDialogueAdvance;
+            @DialogueAdvance.canceled -= instance.OnDialogueAdvance;
         }
 
         /// <summary>
@@ -663,5 +717,12 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnDivinationPotionTest(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "DialogueAdvance" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnDialogueAdvance(InputAction.CallbackContext context);
     }
 }

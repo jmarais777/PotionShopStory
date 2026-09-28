@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a86b7ce1503355f4cb0bb747cd4d2630, type: 3}
+  m_Name: LightTheCauldron
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueSO
+  lines:
+  - speaker: {fileID: 11400000, guid: 37b8dbe7a026ab442a66fd0684724826, type: 2}
+    text: Now, how do you feel? Brewing your first potion is the first proper step
+      toward becoming a true alchemist.
+  - speaker: {fileID: 11400000, guid: f1649f4c6e594e54e8842fea9dd6820c, type: 2}
+    text: "Ready as I\u2019ll ever be! I\u2019m nervous, but excited!"
+  - speaker: {fileID: 11400000, guid: 37b8dbe7a026ab442a66fd0684724826, type: 2}
+    text: Excellent, excellent. Shall we begin then? If you would, light the hearthfire
+      please.
+  - speaker: {fileID: 11400000, guid: 37b8dbe7a026ab442a66fd0684724826, type: 2}
+    text: Excellent, the cauldron will be bubbling away soon enough!
+  - speaker: {fileID: 11400000, guid: 37b8dbe7a026ab442a66fd0684724826, type: 2}
+    text: 'Something nice and simple should do for your first potion, I think. A
+      potion of Soothing perhaps? '
+  - speaker: {fileID: 11400000, guid: 37b8dbe7a026ab442a66fd0684724826, type: 2}
+    text: "\u2026 Yes\u2026 I think that will do excellently. Please do take a look
+      at the recipe, it should\u2026 (Finger snapping sound) be the open page"
+  nextconvo: []
