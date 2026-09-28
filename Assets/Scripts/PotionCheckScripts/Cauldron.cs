@@ -25,6 +25,10 @@ public class Cauldron : MonoBehaviour
     [SerializeField] private TextMeshProUGUI outcomeText;
     [SerializeField] private float outcomeDisplayDuration = 2f;
 
+    [Header("Particle Effects")]
+    [SerializeField] private ParticleSystem successParticles;
+    [SerializeField] private ParticleSystem failureParticles;
+
     private List<GameObject> ingredientsInCauldron = new List<GameObject>();
 
     private void OnEnable()
@@ -98,6 +102,11 @@ public class Cauldron : MonoBehaviour
 
         if(success)
         {
+            if (successParticles != null)
+            {
+                successParticles.Play();
+            }
+
             Debug.Log($"Success! You have all you need for a {currentRecipe.potionName}");
             ShowOutcome($"Wonderful! You have all you need for a {currentRecipe.potionName}!");
             if(sliderMovement != null)
@@ -112,6 +121,11 @@ public class Cauldron : MonoBehaviour
         }
         else
         {
+            if (failureParticles != null)
+            {
+                failureParticles.Play();
+            }
+
             ShowOutcome("Brewing failed. Check the recipe again.");
             Debug.Log("Brewing failed.");
         }
