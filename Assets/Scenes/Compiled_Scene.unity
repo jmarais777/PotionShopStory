@@ -392417,6 +392417,7 @@ MonoBehaviour:
   portrait: {fileID: 1697883781}
   actorName: {fileID: 1609460000}
   dialogueText: {fileID: 2134037878}
+  glowParticles: {fileID: 0}
   isDialogueActive: 0
 --- !u!4 &1466934951
 Transform:
