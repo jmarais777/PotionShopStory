@@ -15,6 +15,8 @@ public class CuttingSpray : MonoBehaviour
     [SerializeField] ParticleSystem blueSpray = null; // get the blue spray effect
     private bool ingredientAOnBoard = false;
     private bool ingredientBOnBoard = false;
+    private bool playerOnBoard = false;
+
 
     public void OnTriggerEnter(Collider other)
     {
@@ -22,13 +24,23 @@ public class CuttingSpray : MonoBehaviour
         {
             ingredientAOnBoard = true;
             ingredientBOnBoard = false;
-            //Debug.Log("yellow");
+          
+
+            Debug.Log("yellow");
         }
         else if(other.CompareTag("IngredientB")) //if the blue ingredient is on the cutting board
         {
             ingredientBOnBoard = true;
             ingredientAOnBoard = false;
-            //Debug.Log("blue");
+          
+
+            Debug.Log("blue");
+        }
+        else if(other.CompareTag("Player"))
+        {
+            playerOnBoard = true;
+            Debug.Log("Player");
+
         }
     }
 
@@ -37,10 +49,20 @@ public class CuttingSpray : MonoBehaviour
         if(other.CompareTag("IngredientA"))
         {
             ingredientAOnBoard = false;
+            yellowSpray.Stop();
+
         }
         else if(other.CompareTag("IngredientB"))
         {
             ingredientBOnBoard = false;
+            blueSpray.Stop();
+
+        }
+        else if(other.CompareTag("Player"))
+        {
+            playerOnBoard = false;
+            yellowSpray.Stop();
+            blueSpray.Stop();
         }
     }
 
@@ -50,12 +72,12 @@ public class CuttingSpray : MonoBehaviour
     {
         return;
     }
-    if(context.performed && ingredientAOnBoard) //if the button is pressed and the yellow object is on the cutting board
+    if(context.performed && ingredientAOnBoard && playerOnBoard) //if the button is pressed and the yellow object is on the cutting board
     {
         yellowSpray.Play(); //play the yellow particle effect
         blueSpray.Stop(); //ensure the blue effect won't interfere
     }
-    else if(context.performed && ingredientBOnBoard) //if the button is pressed and the blue object is on the board
+    else if(context.performed && ingredientBOnBoard && playerOnBoard) //if the button is pressed and the blue object is on the board
     {
         blueSpray.Play(); //play the blue particle effect
         yellowSpray.Stop(); //ensure the yellow effect won't interfere
