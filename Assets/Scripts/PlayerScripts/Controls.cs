@@ -385,17 +385,6 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""action"": ""DialogueAdvance"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""fd623605-9799-4e5f-9181-4b78c5f3d38b"",
-                    ""path"": ""<Mouse>/leftButton"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""DialogueAdvance"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
                 }
             ]
         }
