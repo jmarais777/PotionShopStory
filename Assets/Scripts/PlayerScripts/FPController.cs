@@ -91,6 +91,11 @@ public class FPController : MonoBehaviour
         
         // if (Input.Get.Axis("Vertical")) > 0.1 for gamepad implementation
 
+        if (DialogueManager.Instance.isDialogueActive) // checking if dialogue is active
+        {
+            return;
+        }
+
         if (Keyboard.current.wKey.isPressed) // The player gets faster the longer they move forward.
         {
             currentSpeed += acceleration * Time.deltaTime;
@@ -174,6 +179,12 @@ public class FPController : MonoBehaviour
     public void OnPickUp(InputAction.CallbackContext context)
     {
         if (!context.performed) return;
+
+        if (DialogueManager.Instance.isDialogueActive) // checking if dialogue is active
+        {
+            return;
+        }
+
         if (heldObject == null)
         {
             Ray ray = new Ray(cameraTransform.position,
