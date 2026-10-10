@@ -7,6 +7,8 @@ TagManager:
   - IngredientA
   - IngredientB
   - AirPotion
+  - SleepPotion
+  - SunPotion
   layers:
   - Default
   - TransparentFX

@@ -14,8 +14,10 @@ public class LetterRemove : MonoBehaviour
 {
     public LetterPileInteraction letterPile;
     public GameObject dollarSign;
+    private bool hasPlayed = false;
 
     AudioSource source;
+    private Coroutine hideDollarCoroutine;
 
     void Awake()
     {
@@ -30,19 +32,46 @@ public class LetterRemove : MonoBehaviour
 
     private void OnTriggerEnter(Collider other) //refers to the box collider on the crate 
     {
-        if(other.CompareTag("AirPotion")) //if this specific object enters the collider
+        if(letterPile == null)
         {
-            letterPile.RemoveCurrentLetter(); //refers to the romove letter function in the LetterPileInteraction script - it, well, removes the letter
-            source.Play();        
+            Debug.LogWarning("LetterPileInteraction has not been assigned.", this);
+            return;
+        }
+
+        bool letterRemoved = letterPile.TryRemoveLetter(other.tag);
+
+        if(!letterRemoved)
+        {
+            return;
+        }
+
+        if(source != null)
+        {
+            source.Play();
+        }
+
+        if(dollarSign != null)
+        {
             dollarSign.SetActive(true);
-            StartCoroutine(HideDollarSign());
+
+            if(hideDollarCoroutine != null)
+            {
+                StopCoroutine(hideDollarCoroutine);
+
+            }
+            hideDollarCoroutine = StartCoroutine(HideDollarSign());
         }
     }
 
-    IEnumerator HideDollarSign()
+
+    private IEnumerator HideDollarSign()
     {
         yield return new WaitForSeconds(1.5f);
-        dollarSign.SetActive(false);
+        if(dollarSign != null)
+        {
+            dollarSign.SetActive(false);
+        }
+        hideDollarCoroutine = null;
     }
 
 

@@ -18,13 +18,13 @@ public class CuttingSpray : MonoBehaviour
     private bool playerOnBoard = false;
 
 
+
     public void OnTriggerEnter(Collider other)
     {
         if(other.CompareTag("IngredientA")) //if the yellow ingredient is on the cutting board
         {
             ingredientAOnBoard = true;
             ingredientBOnBoard = false;
-          
 
             Debug.Log("yellow");
         }
@@ -32,7 +32,6 @@ public class CuttingSpray : MonoBehaviour
         {
             ingredientBOnBoard = true;
             ingredientAOnBoard = false;
-          
 
             Debug.Log("blue");
         }
@@ -65,6 +64,8 @@ public class CuttingSpray : MonoBehaviour
             blueSpray.Stop();
         }
     }
+
+
 
     public void OnEButton(InputAction.CallbackContext context) //when the E button is pressed (keyboard)
 {
