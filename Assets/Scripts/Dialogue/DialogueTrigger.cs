@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class DialogueTrigger : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class DialogueTrigger : MonoBehaviour
 
     bool hasPlayed;
 
+    private bool isWaiting;
+
     void Start()
     {
         if (playOnStart) 
@@ -22,11 +25,22 @@ public class DialogueTrigger : MonoBehaviour
 
     void OnTriggerStay(Collider other)
     {
-        if (playOnTriggerEnter && other.CompareTag(playerTag))
+        if (playOnTriggerEnter && other.CompareTag(playerTag) && !isWaiting)
         {
-           Play(); 
+           StartCoroutine(WaitAndExecute());
         }
          
+    }
+
+    private IEnumerator WaitAndExecute()
+    {
+        isWaiting = true;
+
+        Play();
+
+        yield return new WaitForSeconds(5f);
+
+        isWaiting = false;
     }
 
     public void Play()

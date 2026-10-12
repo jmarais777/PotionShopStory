@@ -40,6 +40,8 @@ public class BrewTea : MonoBehaviour
 
     [SerializeField] private ParticleSystem teaSteam; 
 
+    public static bool isTeaComplete = false; // To check whether the tutorial is complete
+
     private Vector3 _targetPosition = new Vector3(1000f, 1000f, 1000f);
 
     private List<GameObject> ingredientsInCup = new List<GameObject>();
@@ -137,6 +139,9 @@ public class BrewTea : MonoBehaviour
             {
             Brewing.transform.position = _targetPosition;
             Brewed.SetActive(true);
+
+            isTeaComplete = true; // Once the tea is brewed, it'll be true
+
              foreach (GameObject i in ingredientsInCup)
         {
             i.SetActive(false);
