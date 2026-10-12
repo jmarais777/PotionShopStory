@@ -63,7 +63,11 @@ public class Workstation : MonoBehaviour
 
         foreach (SwapPair pair in _pairsInRange) //Makes it so that every ingredient in range will get swapped, if they have a SwapPair in the list
         {
-            pair.Swap(_stationID);//Calls the Swap method, from my SwapPair script
+            if(pair != null && pair.gameObject.activeInHierarchy)
+            {
+                pair.Swap(_stationID);//Calls the Swap method, from my SwapPair script
+            }
+            
         }
 
         _pairsInRange.Clear(); //Clears the list, since everything on it was just processed. Because apparently disabling the object doesn't trigger the OnTriggerExit :(
