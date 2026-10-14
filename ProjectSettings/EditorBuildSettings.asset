@@ -5,9 +5,30 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
+  - enabled: 1
+    path: Assets/Scenes/Character Bios/Balthazar.unity
+    guid: d08a579b3733e82438051cfa6be2ad45
+  - enabled: 1
+    path: Assets/Scenes/Kai3.unity
+    guid: 2b94e1c9ff9606b47a9dcb330ce6912a
+  - enabled: 1
+    path: Assets/Scenes/Start Menu.unity
+    guid: 916673cae157b554cb5c8bad98df1a22
+  - enabled: 1
+    path: Assets/Scenes/Character Bios/bird.unity
+    guid: 5bc4212a4a8bd0048b1af5dd7c6b02eb
+  - enabled: 1
+    path: Assets/Scenes/Character Bios/frog.unity
+    guid: cf73a4e92ef560147b307812d461dbcc
+  - enabled: 1
+    path: Assets/Scenes/Character Bios/Sylvan.unity
+    guid: 4d27c89d6ca49e246bd60f6f7b4920f4
+  - enabled: 1
+    path: Assets/Scenes/Characters.unity
+    guid: 066abcdfa1d22a143a07c201d31b6361
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0

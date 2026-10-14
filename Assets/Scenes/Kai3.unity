@@ -42877,7 +42877,7 @@ GameObject:
   - component: {fileID: 160086329}
   - component: {fileID: 160086328}
   m_Layer: 5
-  m_Name: Gamepad
+  m_Name: keyboard
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -42899,8 +42899,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -279.2, y: 198}
-  m_SizeDelta: {x: 25.1161, y: 23.348}
+  m_AnchoredPosition: {x: -321.8, y: 199}
+  m_SizeDelta: {x: 42.3753, y: 23.4185}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &160086328
 MonoBehaviour:
@@ -42922,7 +42922,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: a64e0a85704b3f546869b6dd80c87279, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -389977,7 +389977,7 @@ GameObject:
   - component: {fileID: 1368563776}
   - component: {fileID: 1368563775}
   m_Layer: 5
-  m_Name: Keyboard
+  m_Name: gamepad
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -389999,8 +389999,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -330.9, y: 198.5}
-  m_SizeDelta: {x: 25.6037, y: 23.3482}
+  m_AnchoredPosition: {x: -253.9, y: 198.9}
+  m_SizeDelta: {x: 37.1068, y: 36.7457}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1368563775
 MonoBehaviour:
@@ -390022,7 +390022,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 24d8d166f6202de46a91f283ad5c751a, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -511080,11 +511080,11 @@ RectTransform:
   - {fileID: 465151143}
   - {fileID: 1056239112}
   - {fileID: 784028222}
-  - {fileID: 689586953}
   - {fileID: 365996656}
   - {fileID: 451398597}
   - {fileID: 1682471752}
   - {fileID: 335516993}
+  - {fileID: 689586953}
   - {fileID: 1506590036}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -614730,7 +614730,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Press         or        to pause
+  m_text: Press            or            to pause
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
