@@ -17,6 +17,9 @@ public class LetterPileInteraction : MonoBehaviour
     [Header("Required Objects")]
     public GameObject[] requiredObjects;
 
+    [Header("Required Potion Tags")]
+    public string[] requiredPotionTags;
+
     private bool playerInRange = false;
 
     private int currentLetter = 0; //which letter is currently available
@@ -71,9 +74,9 @@ public class LetterPileInteraction : MonoBehaviour
         {
             return;
         }
-        if(requiredObjects[currentLetter] == null) //required object must exist and still be active
+        if(currentLetter >= requiredObjects.Length || requiredObjects[currentLetter] == null)
         {
-            Debug.LogWarning("No required object has been assigned for Letter " + (currentLetter + 1));
+            Debug.LogWarning("No reqired object assigned for Letter " + (currentLetter + 1));
             return;
         }
         
@@ -89,13 +92,18 @@ public class LetterPileInteraction : MonoBehaviour
 
     private void OpenCurrentLetterUI()
     {
+        if(currentLetter >= letterUI.Length || letterUI[currentLetter] == null)
+        {
+            Debug.LogWarning("No letter UI assigned for letter " + (currentLetter + 1));
+            return;
+        }
         letterUI[currentLetter].SetActive(true);
         letterUIOpen = true;
     }
 
     private void CloseCurrentLetterUI()
     {
-        if (currentLetter < letterUI.Length)
+        if (currentLetter < letterUI.Length && letterUI[currentLetter] != null)
         {
             letterUI[currentLetter].SetActive(false);
         }
@@ -103,29 +111,52 @@ public class LetterPileInteraction : MonoBehaviour
         letterUIOpen = false;
     }
 
-    public void RemoveCurrentLetter()
+    public bool TryRemoveLetter(string potionTag)
     {
-        if (currentLetter >= physicalLetters.Length) //make sure current letter exists
+        if(currentLetter >= physicalLetters.Length)
         {
-            return;
+            return false;
         }
-        CloseCurrentLetterUI(); //close the UI
-        physicalLetters[currentLetter].SetActive(false); //remove the physical letter
-        currentLetter++; //move to the next letter
-        if(currentLetter < physicalLetters.Length) //if there is another letter, activate it
+        if(currentLetter >= requiredPotionTags.Length || string.IsNullOrEmpty(requiredPotionTags[currentLetter]))
         {
-            if (playerInRange) //player can now interact with the next letter
+            Debug.LogWarning("No required potion tag assigned for letter " + (currentLetter + 1));
+            return false;
+        }
+
+        if(potionTag != requiredPotionTags[currentLetter])
+        {
+            Debug.Log("Incorrect potion for letter " + (currentLetter + 1) + ". Required: " + requiredPotionTags[currentLetter] + ", received: " + potionTag);
+            return false;
+        }
+
+        CloseCurrentLetterUI();
+
+        if(physicalLetters[currentLetter] != null)
+        {
+            physicalLetters[currentLetter].SetActive(false);
+        }
+
+        currentLetter++;
+
+        if(currentLetter < physicalLetters.Length)
+        {
+            if(playerInRange && buttonObject != null)
             {
                 buttonObject.SetActive(true);
             }
         }
         else
         {
-            buttonObject.SetActive(false); //all letter are read; no need for prompt
-            Debug.Log("All letters have been read.");
+            if(buttonObject != null)
+            {
+                buttonObject.SetActive(false);
+            }
+            Debug.Log("All letters have been removed.");
 
         }
         letterUIOpen = false;
+        return true;
     }
+
 }
 
