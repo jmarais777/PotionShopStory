@@ -93,6 +93,7 @@ public class ResultsUIController : MonoBehaviour
         if(other.CompareTag("Player"))
         {
             playerInCollider = true;
+            RefreshUI();
 
         }
     }
@@ -102,6 +103,16 @@ public class ResultsUIController : MonoBehaviour
         if(other.CompareTag("Player"))
         {
             playerInCollider = false;
+            invoiceIsOpen = false;
+            if(completionPrompt != null)
+            {
+                completionPrompt.SetActive(false);
+            }
+
+            if(resultsInvoice != null)
+            {
+                resultsInvoice.SetActive(false);
+            }
         }
     }
 
@@ -139,14 +150,14 @@ public class ResultsUIController : MonoBehaviour
             summaryText.text = tracker.GetSummaryText();
         }
 
-        if(completionPrompt != null && playerInCollider)
+        if(completionPrompt != null)
         {
-            completionPrompt.SetActive(tracker.AllPotionsCollected && !invoiceIsOpen);
+            completionPrompt.SetActive(playerInCollider && tracker.AllPotionsCollected && !invoiceIsOpen);
         }
 
-        if(resultsInvoice != null && playerInCollider)
+        if(resultsInvoice != null)
         {
-            resultsInvoice.SetActive(invoiceIsOpen);
+            resultsInvoice.SetActive(playerInCollider && invoiceIsOpen);
         }
     }
 

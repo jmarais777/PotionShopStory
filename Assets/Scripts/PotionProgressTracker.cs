@@ -17,6 +17,7 @@ public class PotionProgressTracker : MonoBehaviour
 
     public int IngredientsProcessed { get; private set; }
     public int PotionsCollected { get; private set; }
+    public int PotionsSold { get; private set; }
 
     public event Action OnProgressChanged;
 
@@ -68,8 +69,10 @@ public class PotionProgressTracker : MonoBehaviour
             ingredientName = "Unknown Ingredient";
         }
         IngredientsProcessed++;
+
+
         //AddLog(ingredientName + " has been processed. " + "Total ingredients processed: " + IngredientsProcessed);
-        AddLog("Ingredient used: " + IngredientsProcessed + ". Cost: 10pp");
+        AddLog("Ingredient used: " + IngredientsProcessed + ". Cost per item: 10pp");
     }
 
     public bool IsRequiredPotionTag(string potionTag)
@@ -99,9 +102,23 @@ public class PotionProgressTracker : MonoBehaviour
 
         PotionsCollected++;
 
-        bool firstOfType = collectedPotionTypes.Add(potionTag);
+        collectedPotionTypes.Add(potionTag);
 
-        string message = "Potion added to the crate: " + potionTag + ". Price: 20pp";
+        if(potionTag == "SoothePotion")
+        {
+            AddLog("Potions made: " + potionTag);
+        }
+        else
+        {
+            PotionsSold++;
+
+            AddLog("Potion added to the crate: " + potionTag + ". Price: 20pp.");
+
+        }
+
+        //bool firstOfType = collectedPotionTypes.Add(potionTag);
+
+        //string message = "Potion added to the crate: " + potionTag + ". Price: 20pp";
         //string message = potionTag + " added to the crate. " + "Potions collected: " + PotionsCollected + ". Required types collected: " + CollectedPotionTypeCount + "/" + RequiredPotionTypeCount + ".";
 
        // if(firstOfType)
@@ -109,7 +126,7 @@ public class PotionProgressTracker : MonoBehaviour
           //  message += "This potion type is now complete.";
        //}
 
-        AddLog(message);
+        //AddLog(message);
 
         if(AllPotionsCollected)
         {
@@ -148,7 +165,7 @@ public class PotionProgressTracker : MonoBehaviour
 
     public string GetSummaryText()
     {
-        return "Cost of ingredients used = 10pp x " + IngredientsProcessed + ". Price of ingredients sold = 20pp x " + PotionsCollected;
+        return "Cost of ingredients used = 10pp x " + IngredientsProcessed + ". Price of ingredients sold = 20pp x " + PotionsSold;
         
         //return "Ingredients processed: " + IngredientsProcessed + "/nPotions collected: " + PotionsCollected + "/nRequired Potion types: " + CollectedPotionTypeCount + "/" + RequiredPotionTypeCount;
     }
