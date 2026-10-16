@@ -12,16 +12,34 @@ public class SwapPair : MonoBehaviour
 
     [Tooltip("Defines what this ingredient becomes at each specific workstation.")]
     [SerializeField] private List<WorkstationOutcome> outcomes = new List<WorkstationOutcome>();
-    public void Swap(string stationId) //Called by Workstation script when the ingredient is swapped, stationID checks which workstation triggered the swap
+    public bool Swap(string stationId) //Called by Workstation script when the ingredient is swapped, stationID checks which workstation triggered the swap
 
     {
         WorkstationOutcome outcome = outcomes.Find(o => o.stationId == stationId); //Searches the list of outcomes against the stationID from the station calling the method
 
+        if(outcome == null || outcome.replacementIngredient == null)
+        {
+            Debug.LogWarning("No valid replacement ingredient found for workstation: " + stationId, this);
+            return false;
+        }
+
+        string ingredientName = gameObject.name;
+
+        outcome.replacementIngredient.SetActive(true);
+
         gameObject.SetActive(false); //Disables the unprocessed ingredient
 
-        if (outcome.replacementIngredient != null) 
+        if(PotionProgressTracker.Instance != null)
         {
-            outcome.replacementIngredient.SetActive(true); //activates the correct ingredient for the workstation
+            PotionProgressTracker.Instance.RecordIngredient(ingredientName);
         }
+        else
+        {
+            Debug.LogWarning("PotionProgressTracker is missing from the scene." + " The ingredient was processed, but this was not recorded.", this);
+
+        }
+        return true;
+
+
     }
 }

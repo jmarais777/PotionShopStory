@@ -1,4 +1,14 @@
-//https://www.youtube.com/watch?v=JivuXdrIHK0 
+//Author: Brackeys
+//Title: PAUSE MENU in Unity
+//Date: 20 December 2017
+//Code version: Unity 2017.2.0f3
+//Availability: https://www.youtube.com/watch?v=JivuXdrIHK0 
+
+//Author: Unity Documentation
+//Title: Cursor.lockState
+//Date: 14 October 2026
+//Code version: Unity 6000.6
+//AAvailability: https://docs.unity3d.com/6000.6/Documentation/ScriptReference/Cursor-lockState.html 
 
 using System.Collections;
 using System.Collections.Generic;
