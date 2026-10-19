@@ -45,6 +45,9 @@ public class LetterRemove : MonoBehaviour
             return;
         }
 
+        if(other.CompareTag("AirPotion") || other.CompareTag("SleepPotion") || other.CompareTag("SunPotion"))
+        {
+            
         if(source != null)
         {
             source.Play();
@@ -60,6 +63,21 @@ public class LetterRemove : MonoBehaviour
 
             }
             hideDollarCoroutine = StartCoroutine(HideDollarSign());
+        }
+
+
+        }
+
+        PotionProgressTracker tracker = PotionProgressTracker.Instance;
+
+        if(tracker != null)
+        {
+            tracker.RecordPotion(other.gameObject, other.tag);
+        }
+        else
+        {
+            Debug.LogWarning("PotionProgressTracker is missing from scene.", this);
+
         }
     }
 
