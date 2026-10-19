@@ -27,6 +27,10 @@ public class Workstation : MonoBehaviour
     {
         _interactAction.action.performed -= OnInteractPerformed; 
         _interactAction.action.Disable();
+
+        _isPlayerInRange = false;
+        _pairsInRange.Clear();
+
     }
 
     private void OnTriggerEnter(Collider _otherCollider)
@@ -39,7 +43,12 @@ public class Workstation : MonoBehaviour
 
         if (_otherCollider.TryGetComponent(out SwapPair pair)) //Check to see if the object triggering the workstation collider has a SwapPair component
         {
-            _pairsInRange.Add(pair); //If true, it adds a pair to the _pairInRange list
+            if(!_pairsInRange.Contains(pair))
+            {
+                 _pairsInRange.Add(pair); //If true, it adds a pair to the _pairInRange list
+
+            }
+           
         }
     }
 

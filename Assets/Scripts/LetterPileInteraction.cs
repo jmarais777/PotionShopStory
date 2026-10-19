@@ -18,7 +18,13 @@ public class LetterPileInteraction : MonoBehaviour
     public GameObject[] requiredObjects;
 
     [Header("Required Potion Tags")]
-    public string[] requiredPotionTags;
+    [SerializeField] private string[] requiredPotionTags =
+    {
+        "SoothePotion",
+        "AirPotion",
+        "SleepPotion",
+        "SunPotion"
+    };
 
     private bool playerInRange = false;
 
