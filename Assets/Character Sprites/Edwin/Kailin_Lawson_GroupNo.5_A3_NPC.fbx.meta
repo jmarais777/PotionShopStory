@@ -8,27 +8,27 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Material.002
-    second: {fileID: 2100000, guid: 28ea09f1e7b85b64d9a675819bb427d5, type: 2}
+    second: {fileID: 2100000, guid: c3b3dfd14ed645c48b00cf2d30957b20, type: 2}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: Kailin_Lawson_Group5_A2_NPC_Metallic
-    second: {fileID: 2800000, guid: bcd27c0aacdd082438d3f6db0bc3c0c3, type: 3}
+    second: {fileID: 2800000, guid: 809ddfab51b374e4b86c2c8a4765057c, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: Kailin_Lawson_Group5_A2_NPC_Roughness
-    second: {fileID: 2800000, guid: 2db6ce08960fa9d4f9a30f09f09b02c3, type: 3}
+    second: {fileID: 2800000, guid: 8eb247da0e1a3914b8b54f5bcfb4294e, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: Kailin_Lawson_Group5_NPC_Normal5
-    second: {fileID: 2800000, guid: 0a0acb70640b402478f9894935648293, type: 3}
+    second: {fileID: 2800000, guid: 5f0b6389763469542a7f12d95f929509, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: albedo map outline
-    second: {fileID: 2800000, guid: 67b89891aa1491440922cfb7a092f681, type: 3}
+    second: {fileID: 2800000, guid: 1ceaeadfb14db3742b08aa918584f117, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -120,6 +120,35 @@ ModelImporter:
       internalID: 4374574919198897938
       firstFrame: 0
       lastFrame: 24
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Armature|Happy_Jump
+      takeName: Armature|Happy_Jump
+      internalID: 1147142426599472583
+      firstFrame: 0
+      lastFrame: 12
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
