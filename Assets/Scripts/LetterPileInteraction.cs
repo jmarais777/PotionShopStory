@@ -135,6 +135,12 @@ public class LetterPileInteraction : MonoBehaviour
             return false;
         }
 
+        if(physicalLetters[currentLetter] == null)
+        {
+            Debug.LogWarning("Physical letter " + (currentLetter + 1) + " has not been assigned. ", this);
+            return false;
+        }
+
         CloseCurrentLetterUI();
 
         if(physicalLetters[currentLetter] != null)

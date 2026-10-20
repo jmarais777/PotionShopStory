@@ -16,6 +16,8 @@ public class LetterRemove : MonoBehaviour
     public GameObject dollarSign;
     private bool hasPlayed = false;
 
+    private readonly HashSet<GameObject> processedPotions = new HashSet<GameObject>();
+
     AudioSource source;
     private Coroutine hideDollarCoroutine;
 
@@ -38,12 +40,23 @@ public class LetterRemove : MonoBehaviour
             return;
         }
 
-        bool letterRemoved = letterPile.TryRemoveLetter(other.tag);
+        GameObject potionObject = other.attachedRigidbody != null 
+            ? other.attachedRigidbody.gameObject
+            : other.transform.root.gameObject;
+        
+        if(processedPotions.Contains(potionObject))
+        {
+            return;
+        }
+        
+        bool letterRemoved = letterPile.TryRemoveLetter(potionObject.tag);
 
         if(!letterRemoved)
         {
             return;
         }
+
+        processedPotions.Add(potionObject);
 
         if(other.CompareTag("AirPotion") || other.CompareTag("SleepPotion") || other.CompareTag("SunPotion"))
         {
