@@ -38,7 +38,8 @@ public class BrewTea : MonoBehaviour
     [SerializeField] private GameObject Brewed;
     [SerializeField] private GameObject MagicKettle;
 
-    [SerializeField] private ParticleSystem teaSteam; 
+    [SerializeField] private ParticleSystem teaSteam;
+    [SerializeField] private GameObject _stoveLight;
 
     public static bool isTeaComplete = false; // To check whether the tutorial is complete
 
@@ -164,6 +165,7 @@ public class BrewTea : MonoBehaviour
         if (teaSteam != null)
         {
             teaSteam.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+            _stoveLight.SetActive(false);
         }
     }
 }

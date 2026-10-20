@@ -13,6 +13,7 @@ public class BoilStove : MonoBehaviour
     private bool _isPlayerInRange = false;
 
     [SerializeField] private AudioSource _kettleHeating;
+    [SerializeField] private GameObject _stoveOn;
 
     private void OnEnable()
     {
@@ -49,5 +50,6 @@ public class BoilStove : MonoBehaviour
         if (!_isPlayerInRange) return;
 
         _kettleHeating.Play();
+        _stoveOn.SetActive(true);
     }
 }
