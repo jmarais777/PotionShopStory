@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -40,6 +41,8 @@ public class FPController : MonoBehaviour
     public Transform holdPoint;
     private PickUpObject heldObject;
 
+    private Animator PlayerAnim;
+
     private CharacterController controller;
     private Vector2 moveInput;
     private Vector2 lookInput;
@@ -50,6 +53,8 @@ public class FPController : MonoBehaviour
 
     private void Awake()
     {
+        PlayerAnim = GetComponentInChildren<Animator>();
+
         controller = GetComponent<CharacterController>();
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
@@ -68,6 +73,9 @@ public class FPController : MonoBehaviour
         {
             heldObject.MoveToHoldPoint(holdPoint.position);
         }
+
+        float animationSpeedParameter = Mathf.Abs(horizontalVelocity.x);
+        PlayerAnim.SetFloat("Speed", animationSpeedParameter);
     }
 
     private void LateUpdate()
