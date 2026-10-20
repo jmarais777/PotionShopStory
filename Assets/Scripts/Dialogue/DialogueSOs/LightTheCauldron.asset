@@ -19,13 +19,10 @@ MonoBehaviour:
   - speaker: {fileID: 11400000, guid: f1649f4c6e594e54e8842fea9dd6820c, type: 2}
     text: "Ready as I\u2019ll ever be! I\u2019m nervous, but excited!"
   - speaker: {fileID: 11400000, guid: 37b8dbe7a026ab442a66fd0684724826, type: 2}
-    text: Excellent, excellent. Shall we begin then? If you would, light the hearthfire
-      please.
+    text: Excellent, excellent. Shall we begin then?
   - speaker: {fileID: 11400000, guid: 37b8dbe7a026ab442a66fd0684724826, type: 2}
-    text: Excellent, the cauldron will be bubbling away soon enough!
-  - speaker: {fileID: 11400000, guid: 37b8dbe7a026ab442a66fd0684724826, type: 2}
-    text: 'Something nice and simple should do for your first potion, I think. A
-      potion of Soothing perhaps? '
+    text: Something nice and simple should do for your first potion, I think. A potion
+      of Soothing perhaps?
   - speaker: {fileID: 11400000, guid: 37b8dbe7a026ab442a66fd0684724826, type: 2}
     text: "\u2026 Yes\u2026 I think that will do excellently. Please do take a look
       at the recipe, it should\u2026 (Finger snapping sound) be the open page"
