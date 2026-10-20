@@ -38,7 +38,8 @@ public class BrewTea : MonoBehaviour
     [SerializeField] private GameObject Brewed;
     [SerializeField] private GameObject MagicKettle;
 
-    [SerializeField] private ParticleSystem teaSteam; 
+    [SerializeField] private ParticleSystem teaSteam;
+    [SerializeField] private GameObject _stoveLight;
 
     private Vector3 _targetPosition = new Vector3(1000f, 1000f, 1000f);
 
@@ -159,6 +160,7 @@ public class BrewTea : MonoBehaviour
         if (teaSteam != null)
         {
             teaSteam.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+            _stoveLight.SetActive(false);
         }
     }
 }
