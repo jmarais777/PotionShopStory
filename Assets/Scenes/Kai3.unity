@@ -76736,6 +76736,7 @@ MonoBehaviour:
   Brewed: {fileID: 541164625}
   MagicKettle: {fileID: 269362136}
   teaSteam: {fileID: 471273530}
+  _stoveLight: {fileID: 0}
 --- !u!65 &310542678
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -89598,6 +89599,7 @@ MonoBehaviour:
   _interactAction: {fileID: 3786611123462103431, guid: 658aee06180087c4893416d618922590, type: 3}
   playerTag: Player
   _kettleHeating: {fileID: 133964153}
+  _stoveOn: {fileID: 0}
 --- !u!64 &377431993
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -321063,8 +321065,8 @@ Transform:
   - {fileID: 972876925}
   - {fileID: 1630008261}
   - {fileID: 975498630}
-  - {fileID: 1455348952}
   - {fileID: 1118255813}
+  - {fileID: 1455348952}
   - {fileID: 327025375}
   - {fileID: 1352232133}
   - {fileID: 446746400}
@@ -367457,8 +367459,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.92260075, y: 1.910574, z: 0.80563784}
-  m_Center: {x: -0.15448618, y: -0.45528698, z: -0.07787585}
+  m_Size: {x: 1.4348927, y: 1.910574, z: 0.80563784}
+  m_Center: {x: -0.41063213, y: -0.45528698, z: -0.07787585}
 --- !u!1 &1299196728
 GameObject:
   m_ObjectHideFlags: 0
