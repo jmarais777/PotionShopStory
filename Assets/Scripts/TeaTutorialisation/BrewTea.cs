@@ -75,6 +75,11 @@ public class BrewTea : MonoBehaviour
             return;
         }
 
+        if ((other.gameObject.name == "kitchen counter") || (other.gameObject.name == "Stairlip (4)")) // ensuring the environment doesn't count as "ingredients" in the collider
+        {
+            return;
+        }
+
         if (!ingredientsInCup.Contains(other.gameObject))
         {
             ingredientsInCup.Add(other.gameObject);
@@ -92,6 +97,8 @@ public class BrewTea : MonoBehaviour
         }
 
         ingredientsInCup.Remove(other.gameObject);
+
+        Debug.Log("Ingredient removed: " + other.gameObject.name);
     }
 
     private string PlainName(string rawName) // to remove the (1) and (2) etc. from the end of the game object names, no matter how many duplicates
@@ -117,8 +124,11 @@ public class BrewTea : MonoBehaviour
 
         ingredientsInCup.RemoveAll(g => g == null || !g.activeInHierarchy); // getting rid of disabled game objects
 
+        Debug.Log(string.Join(", ", ingredientsInCup));
+
         List<string> namesInCauldron = ingredientsInCup.Select(g => PlainName(g.name)).ToList();
 
+        Debug.Log(string.Join(", ", namesInCauldron));
 
         bool success = currentRecipe.requiredIngredientNames.All(required => namesInCauldron.Contains(required)) && (namesInCauldron.Count == currentRecipe.requiredIngredientNames.Count);
         //                     && namesInCauldron.Count == currentRecipe.requiredIngredientNames.Count;
@@ -145,6 +155,8 @@ public class BrewTea : MonoBehaviour
 
              foreach (GameObject i in ingredientsInCup)
         {
+            Debug.Log(i.name);
+
             i.SetActive(false);
         }
             MagicKettle.SetActive(true);

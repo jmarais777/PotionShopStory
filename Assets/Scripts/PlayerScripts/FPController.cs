@@ -69,6 +69,7 @@ public class FPController : MonoBehaviour
     private void Update()
     {
         HandleMovement();
+
         if (heldObject != null)
         {
             heldObject.MoveToHoldPoint(holdPoint.position);
@@ -208,7 +209,7 @@ public class FPController : MonoBehaviour
                 }
             }
 
-            if (heldObject.name == "Teabag")
+            if (heldObject.name == "Teabag") 
             {
                 heldObject.GetComponent<DialogueTrigger>().Play();
             }
