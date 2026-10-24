@@ -9,14 +9,11 @@ EditorBuildSettings:
     path: Assets/Scenes/SampleScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
   - enabled: 1
-    path: Assets/Scenes/Character Bios/Balthazar.unity
-    guid: d08a579b3733e82438051cfa6be2ad45
+    path: Assets/Scenes/Start Menu.unity
+    guid: 916673cae157b554cb5c8bad98df1a22
   - enabled: 1
     path: Assets/Scenes/Compiled_Scene_3.unity
     guid: fa4fcdb745ff2b645aaa8a736565cd09
-  - enabled: 1
-    path: Assets/Scenes/Start Menu.unity
-    guid: 916673cae157b554cb5c8bad98df1a22
   - enabled: 1
     path: Assets/Scenes/Character Bios/bird.unity
     guid: 5bc4212a4a8bd0048b1af5dd7c6b02eb
@@ -26,6 +23,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Character Bios/Sylvan.unity
     guid: 4d27c89d6ca49e246bd60f6f7b4920f4
+  - enabled: 1
+    path: Assets/Scenes/Character Bios/Balthazar.unity
+    guid: d08a579b3733e82438051cfa6be2ad45
   - enabled: 1
     path: Assets/Scenes/Characters.unity
     guid: 066abcdfa1d22a143a07c201d31b6361
