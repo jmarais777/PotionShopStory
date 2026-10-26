@@ -19,37 +19,110 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
+using TMPro;
 
 public class SliderMovement : MonoBehaviour
 {
+    [Header("Slider")]
     public Slider slider; //reference slider
     public float speed = 0.5f; //set speed
-    public float winMin = 0.33f;
-    public float winMax = 0.66f;
-    private float movement; //movement variable (for the time delta time stuff)
-    private bool miniGameActive = false; //slider is moving
+
+    [Header("Safe Zone")]
+    [SerializeField] private RectTransform safeZoneRect; 
+    //width of teh safe zone as a fraction of the slider track
+    //Level 1 = 30%, level 2 = 20%, level 1 = 10%
+    [SerializeField] private float[] safeZoneWidths =
+    {
+        0.30f,
+        0.20f,
+        0.10f
+    };
+
+    [SerializeField, Range(0f, 1f)]
+    private float safeZoneCenter = 0.5f;
+
+    [Header("UI elements")]
     public GameObject winText;
     public GameObject loseText;
     public GameObject miniGamePanel;
+
+    [Header("Win Event")]
     [SerializeField] private GameObject successfulPotion;
+
+    [Header("Round Timing")]
+    [SerializeField] private float nextRoundDelay = 0.6f;
+    [SerializeField] private float resultDisplayDuration = 3f;
+
+    [Header("Round Display")]
+    [SerializeField] private GameObject round1Text;
+    [SerializeField] private GameObject round2Text;
+    [SerializeField] private GameObject round3Text;
+
+    private float movement;
+    private float winMin;
+    private float winMax;
+
+    private int currentRound;
+    private bool miniGameActive;
+    private bool sequenceInProgress;
     
-    void Start()
+    private void Start()
     {
+        if(slider == null)
+        {
+            Debug.Log("Slider is not assigned", this);
+            enabled = false;
+            return;
+        }
+
+        slider.minValue = 0f;
+        slider.maxValue = 1f;
+        slider.value = 0f;
+
+        if(safeZoneWidths == null || safeZoneWidths.Length != 3)
+        {
+            Debug.Log("SliderMovement requires exactly three safe zone widths", this);
+            enabled = false;
+            return;
+        }
+
+        if(winText != null)
+        {
+            winText.SetActive(false); //when game starts the mini game is not active
+
+        }
+        
+        if(loseText != null)
+        {
+            loseText.SetActive(false);
+
+        }
+
+
         if(successfulPotion != null)
         {
             successfulPotion.SetActive(false);
         }
-        
-        winText.SetActive(false); //when game starts the mini game is not active
-        loseText.SetActive(false);
-        miniGamePanel.SetActive(false);
-        slider.minValue = 0f; //set minimum value
-        slider.maxValue = 1f; // set maximum value
-        slider.value = 0f; // set current or starting value
+
+        if(miniGamePanel != null)
+        {
+            miniGamePanel.SetActive(false);
+
+        }
+
+        if(successfulPotion != null)
+        {
+            successfulPotion.SetActive(false);
+        }
+
+        if(safeZoneRect == null)
+        {
+            Debug.Log("Safe zone rect is not assigned. The green zone will not resize automatically", this);
+        }
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         if (!miniGameActive) //if mini game has ended, stop everything
         {
@@ -61,48 +134,172 @@ public class SliderMovement : MonoBehaviour
 
     public void StartMiniGame() //call to start the mini game
     {
-        miniGameActive = true;
-        movement = 0f;
-        slider.value = 0f;
+        if(sequenceInProgress)
+        {
+            return;
+        }
+        sequenceInProgress = true;
+        miniGameActive = false;
+        currentRound = 0;
+        UpdateRoundDisplay();
         winText.SetActive(false); 
         loseText.SetActive(false);
+        successfulPotion.SetActive(false);
         miniGamePanel.SetActive(true);
+        BeginRound();
+
+    }
+
+    private void BeginRound()
+    {
+        if(currentRound >= safeZoneWidths.Length)
+        {
+            return;
+        }
+        UpdateRoundDisplay();
+        movement = 0f;
+        slider.value = 0f;
+
+        float width = Mathf.Clamp(safeZoneWidths[currentRound], 0.01f, 1f);
+
+        winMin = Mathf.Clamp01(safeZoneCenter - width / 2f);
+        winMax = Mathf.Clamp01(safeZoneCenter + width / 2f);
+
+        if(safeZoneRect != null)
+        {
+            Vector2 anchorMin = safeZoneRect.anchorMin;
+            Vector2 anchorMax = safeZoneRect.anchorMax;
+
+            anchorMin.x = winMin;
+            anchorMax.x = winMax;
+
+            safeZoneRect.anchorMin = anchorMin;
+            safeZoneRect.anchorMax = anchorMax;
+
+            safeZoneRect.offsetMin = new Vector2(
+                0f, safeZoneRect.offsetMin.y
+            );
+
+            safeZoneRect.offsetMax = new Vector2(
+                0f, safeZoneRect.offsetMax.y
+            );
+        }
+
+        miniGameActive = true;
+
     }
 
     public void OnSpace(InputAction.CallbackContext context) //call space input 
     {
-        if(!miniGameActive)
-        {
-            return;
-        }
+
         if(context.performed) //if spacebar is pressed
         {
             miniGameActive = false; //stop movement
             Debug.Log("Space pressed!");
-            bool won = false;
-            if(slider.value >= winMin && slider.value <= winMax) //if slider is in middle
+            bool won = 
+                slider.value >= winMin &&
+                slider.value <= winMax;
+
+            if(!won)
             {
-                Debug.Log("You win!");
-                winText.SetActive(true);
-                won = true;
+                Debug.Log("Brewing failed.");
+                loseText.SetActive(true);
+                StartCoroutine(FinishSequence(false));
+                return;
+            }
+
+            if(currentRound < safeZoneWidths.Length - 1)
+            {
+                currentRound++;
+                StartCoroutine(BeginNextRound());
             }
             else
             {
-                Debug.Log("You lose");
-                loseText.SetActive(true);
-
+                Debug.Log("All three rounds won!");
+                winText.SetActive(true);
+                StartCoroutine(FinishSequence(true));
             }
 
-            StartCoroutine(EndMiniGame(won));
         }
     }
-    IEnumerator EndMiniGame(bool won)
+
+    private void UpdateRoundDisplay()
     {
-        yield return new WaitForSeconds(3f);
+        if(round1Text != null)
+        {
+            round1Text.SetActive(currentRound == 0);
+        }
+
+        if(round2Text != null)
+        {
+            round2Text.SetActive(currentRound == 1);
+        }
+
+        if(round3Text != null)
+        {
+            round3Text.SetActive(currentRound == 2);
+        }
+    }
+
+    private IEnumerator BeginNextRound()
+    {
+        yield return new WaitForSeconds(nextRoundDelay);
+        if(!sequenceInProgress)
+        {
+            yield break;
+        }
+        if(winText != null)
+        {
+            winText.SetActive(false);
+
+        }
+        if(loseText != null)
+        {
+            loseText.SetActive(false);
+        }
+
+        BeginRound();
+
+    }
+
+    private IEnumerator FinishSequence(bool won)
+    {
+        yield return new WaitForSeconds(resultDisplayDuration);
+
+        miniGameActive = false;
+        sequenceInProgress = false;
         miniGamePanel.SetActive(false);
+        UpdateRoundDisplayEnd();
+        if(winText != null)
+        {
+            winText.SetActive(false);
+        }
+        if(loseText != null)
+        {
+            loseText.SetActive(false);
+        }
         if(won && successfulPotion != null)
         {
             successfulPotion.SetActive(true);
+        }
+        
+    }
+
+    private void UpdateRoundDisplayEnd()
+    {
+        if(round1Text != null)
+        {
+            round1Text.SetActive(false);
+        }
+
+        if(round2Text != null)
+        {
+            round2Text.SetActive(false);
+        }
+
+        if(round3Text != null)
+        {
+            round3Text.SetActive(false);
         }
     }
 }
