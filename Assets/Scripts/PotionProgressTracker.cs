@@ -20,6 +20,7 @@ public class PotionProgressTracker : MonoBehaviour
     public int PotionsSold { get; private set; }
     public int TotalIngredientCost { get; private set; }
     public int TotalPotionsPrice { get; private set; }
+    public GameObject doorBlocker;
 
     public event Action OnProgressChanged;
 
@@ -41,6 +42,11 @@ public class PotionProgressTracker : MonoBehaviour
     public int CollectedPotionTypeCount
     {
         get { return collectedPotionTypes.Count; }
+    }
+
+    private void Start()
+    {
+        doorBlocker.SetActive(true);
     }
 
     private void Awake()
@@ -171,6 +177,8 @@ public class PotionProgressTracker : MonoBehaviour
         if(AllPotionsCollected)
         {
             AddLog("All potion orders have been completed!");
+            doorBlocker.SetActive(false);
+            Debug.Log("Door can open.");
         }
 
         return true;
