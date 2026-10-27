@@ -113,24 +113,34 @@ public class ResultsUIController : MonoBehaviour
             {
                 resultsInvoice.SetActive(false);
             }
+            UpdatePauseState();
         }
     }
 
     public void OnInteractPerformed(InputAction.CallbackContext context)
     {
+        if(!context.performed)
+        {
+            return;
+        }
         if(tracker == null || !tracker.AllPotionsCollected)
+        {
+            return;
+        }
+        if(!playerInCollider)
         {
             return;
         }
 
         invoiceIsOpen = !invoiceIsOpen;
 
-        if(resultsInvoice != null && playerInCollider)
-        {
-            resultsInvoice.SetActive(invoiceIsOpen);
-        }
+        //if(resultsInvoice != null && playerInCollider)
+        //{
+         //   resultsInvoice.SetActive(invoiceIsOpen);
+       // }
 
         RefreshUI();
+        UpdatePauseState();
     }
 
     private void RefreshUI()
@@ -159,6 +169,13 @@ public class ResultsUIController : MonoBehaviour
         {
             resultsInvoice.SetActive(playerInCollider && invoiceIsOpen);
         }
+
+        UpdatePauseState();
+    }
+
+    private void UpdatePauseState()
+    {
+        Time.timeScale = invoiceIsOpen ? 0f : 1f;
     }
 
 

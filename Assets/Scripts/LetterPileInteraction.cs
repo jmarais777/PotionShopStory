@@ -2,6 +2,8 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
+using System.Collections;
+using System.Collections.Generic;
 
 public class LetterPileInteraction : MonoBehaviour
 {
@@ -31,9 +33,11 @@ public class LetterPileInteraction : MonoBehaviour
     private int currentLetter = 0; //which letter is currently available
 
     private bool letterUIOpen = false; //track whether current UI is open
+
   
     private void Start()
     {
+
         buttonObject.SetActive(false); //prompt starts off invisible
         for (int i = 0; i < letterUI.Length; i++) //hides all letter UI
         {
@@ -103,8 +107,11 @@ public class LetterPileInteraction : MonoBehaviour
             Debug.LogWarning("No letter UI assigned for letter " + (currentLetter + 1));
             return;
         }
+
         letterUI[currentLetter].SetActive(true);
         letterUIOpen = true;
+
+        Time.timeScale = 0f;
     }
 
     private void CloseCurrentLetterUI()
@@ -115,6 +122,8 @@ public class LetterPileInteraction : MonoBehaviour
         }
 
         letterUIOpen = false;
+
+        Time.timeScale = 1f;
     }
 
     public bool TryRemoveLetter(string potionTag)

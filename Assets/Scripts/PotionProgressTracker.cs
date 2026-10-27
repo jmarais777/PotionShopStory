@@ -18,6 +18,8 @@ public class PotionProgressTracker : MonoBehaviour
     public int IngredientsProcessed { get; private set; }
     public int PotionsCollected { get; private set; }
     public int PotionsSold { get; private set; }
+    public int TotalIngredientCost { get; private set; }
+    public int TotalPotionsPrice { get; private set; }
 
     public event Action OnProgressChanged;
 
@@ -28,8 +30,6 @@ public class PotionProgressTracker : MonoBehaviour
             return requiredPotionTags.Count > 0 &&
             requiredPotionTags.TrueForAll(
                 tag => collectedPotionTypes.Contains(tag));
-            
-
         }
     }
 
@@ -62,17 +62,37 @@ public class PotionProgressTracker : MonoBehaviour
         }
     }
 
-    public void RecordIngredient(string ingredientName)
+    public void RecordIngredient(string ingredientTag)
     {
-        if (string.IsNullOrWhiteSpace(ingredientName))
+        string ingredientName;
+        int costPerItem;
+
+        if(ingredientTag == "IngredientA")
         {
-            ingredientName = "Unknown Ingredient";
+            ingredientName = "Alber Root";
+            costPerItem = 10;
         }
+        else if (ingredientTag == "IngredientB")
+        {
+            ingredientName = "Lamin Bulb";
+            costPerItem = 15;
+        }
+        else
+        {
+            Debug.Log("Unrecognised tag: " + ingredientTag);
+            return;
+
+        }
+
+        //if (string.IsNullOrWhiteSpace(ingredientName))
+       // {
+           // ingredientName = "Unknown Ingredient";
+        //}
+       
         IngredientsProcessed++;
+        TotalIngredientCost += costPerItem;
 
-
-        //AddLog(ingredientName + " has been processed. " + "Total ingredients processed: " + IngredientsProcessed);
-        AddLog("Ingredient used: " + IngredientsProcessed + ". Cost per item: 10pp");
+        AddLog("Ingredient used: " + ingredientName + ". Cost per item: " + costPerItem + "pp");
     }
 
     public bool IsRequiredPotionTag(string potionTag)
@@ -83,6 +103,8 @@ public class PotionProgressTracker : MonoBehaviour
 
     public bool RecordPotion(GameObject potionObject, string potionTag)
     {
+
+
         if(potionObject == null)
         {
             Debug.LogWarning("Cannot record a potion: object is null.");
@@ -100,38 +122,55 @@ public class PotionProgressTracker : MonoBehaviour
             return false;
         }
 
-        PotionsCollected++;
+        string potionName;
+        int pricePerPotion = 0;
 
+        if(potionTag == "AirPotion")
+        {
+            potionName = "Potion of Breathing";
+            pricePerPotion = 25;
+        }
+        else if(potionTag == "SleepPotion")
+        {
+            potionName = "Potion of Sleeping";
+            pricePerPotion = 10;
+        }
+        else if(potionTag == "SunPotion")
+        {
+            potionName = "Potion of Sunlight";
+            pricePerPotion = 30;
+        }
+        else if(potionTag == "SoothePotion")
+        {
+            potionName = "Potion of Soothing";
+        }
+        else
+        {
+            Debug.Log("Unrecognised tag: " + potionTag);
+            return false;
+        }
+
+        PotionsCollected++;
         collectedPotionTypes.Add(potionTag);
 
         if(potionTag == "SoothePotion")
         {
-            AddLog("Potions made: " + potionTag);
+            AddLog("Potions made: " + potionName + ".");
         }
         else
         {
             PotionsSold++;
+            TotalPotionsPrice += pricePerPotion;
 
-            AddLog("Potion added to the crate: " + potionTag + ". Price: 20pp.");
+            AddLog("Potion added to the crate: " + potionName + ". Price: " + pricePerPotion + "pp");
 
         }
 
-        //bool firstOfType = collectedPotionTypes.Add(potionTag);
 
-        //string message = "Potion added to the crate: " + potionTag + ". Price: 20pp";
-        //string message = potionTag + " added to the crate. " + "Potions collected: " + PotionsCollected + ". Required types collected: " + CollectedPotionTypeCount + "/" + RequiredPotionTypeCount + ".";
-
-       // if(firstOfType)
-        //{
-          //  message += "This potion type is now complete.";
-       //}
-
-        //AddLog(message);
 
         if(AllPotionsCollected)
         {
-            //AddLog("All required potion types have been collected!");
-            AddLog("All potions have been added!");
+            AddLog("All potion orders have been completed!");
         }
 
         return true;
@@ -165,9 +204,7 @@ public class PotionProgressTracker : MonoBehaviour
 
     public string GetSummaryText()
     {
-        return "Cost of ingredients used = 10pp x " + IngredientsProcessed + ". Price of ingredients sold = 20pp x " + PotionsSold;
-        
-        //return "Ingredients processed: " + IngredientsProcessed + "/nPotions collected: " + PotionsCollected + "/nRequired Potion types: " + CollectedPotionTypeCount + "/" + RequiredPotionTypeCount;
+        return "Cost of ingredients used = " + TotalIngredientCost + "pp.";
     }
 
 

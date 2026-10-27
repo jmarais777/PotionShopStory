@@ -14,7 +14,7 @@ public class LetterRemove : MonoBehaviour
 {
     public LetterPileInteraction letterPile;
     public GameObject dollarSign;
-    private bool hasPlayed = false;
+    //private bool hasPlayed = false;
 
     private readonly HashSet<GameObject> processedPotions = new HashSet<GameObject>();
 

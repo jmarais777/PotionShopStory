@@ -23,11 +23,12 @@ public class RedLetterUI : MonoBehaviour
     
     public GameObject redLetter; //refers to the UI to summon
 
-    public GameObject auggieTake; //Auggie's dialogue line
+    //public GameObject auggieTake; //Auggie's dialogue line
 
     private bool playerInBox = false; //condition related to box collider
 
     private bool hasPlayed = false; //to ensure this only happens once
+
 
     [SerializeField] private ParticleSystem _smoke;
 
@@ -41,7 +42,7 @@ public class RedLetterUI : MonoBehaviour
     void Start()
     {
         buttonObject.SetActive(false); //prompts start off invisible
-        auggieTake.SetActive(false); //Auggie's dialogue is also invisible
+        //auggieTake.SetActive(false); //Auggie's dialogue is also invisible
     }
 
     private void OnTriggerEnter(Collider other) //when the player enters the box collider
@@ -68,7 +69,7 @@ public class RedLetterUI : MonoBehaviour
         {
            playerInBox = false; //condition is not met
             buttonObject.SetActive(false); //prompts disappear
-           auggieTake.SetActive(false); //the dialogue disappears/will not work
+           //auggieTake.SetActive(false); //the dialogue disappears/will not work
         }
 }
 
@@ -77,12 +78,12 @@ public void OnEButton(InputAction.CallbackContext context) //when the E button i
     if(context.performed && playerInBox && !hasPlayed) //if the E button is pressed, and the player is in the box collider, and if the player has not performed this action, and if the letter exists
     {
         hasPlayed = true; //confirm player has done this action now
-        auggieTake.SetActive(true); //Auggie's dialogue appears
+        //auggieTake.SetActive(true); //Auggie's dialogue appears
         redLetter.SetActive(false); //letter disappears
         source.Play(); //play woosh sound
         _smoke.Play();
     }
 
 }
- 
+
 }

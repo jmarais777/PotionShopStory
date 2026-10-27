@@ -17,21 +17,24 @@ public class SwapPair : MonoBehaviour
     {
         WorkstationOutcome outcome = outcomes.Find(o => o.stationId == stationId); //Searches the list of outcomes against the stationID from the station calling the method
 
-        if(outcome == null || outcome.replacementIngredient == null)
+        if(outcome == null || outcome.replacementIngredient == null) //do not process ingredient if no valid outcome exists 
         {
             Debug.LogWarning("No valid replacement ingredient found for workstation: " + stationId, this);
             return false;
         }
 
-        string ingredientName = gameObject.name;
+        string ingredientTag = gameObject.tag;
+        
 
-        outcome.replacementIngredient.SetActive(true);
+       // string ingredientName = gameObject.name; //save the original ingredient's name before disabling it
+
+        outcome.replacementIngredient.SetActive(true); //activate the processed ingredient
 
         gameObject.SetActive(false); //Disables the unprocessed ingredient
 
-        if(PotionProgressTracker.Instance != null)
+        if(PotionProgressTracker.Instance != null) //record the successful processing action
         {
-            PotionProgressTracker.Instance.RecordIngredient(ingredientName);
+            PotionProgressTracker.Instance.RecordIngredient(ingredientTag);
         }
         else
         {

@@ -128,7 +128,7 @@ public class SliderMovement : MonoBehaviour
         {
             return;
         }
-        movement += speed * Time.deltaTime; //manage movement
+        movement += speed * Time.unscaledDeltaTime; //manage movement
         slider.value = Mathf.PingPong(movement, 1f); //moves back and forth
     }
 
@@ -141,6 +141,7 @@ public class SliderMovement : MonoBehaviour
         sequenceInProgress = true;
         miniGameActive = false;
         currentRound = 0;
+        Time.timeScale = 0f;
         UpdateRoundDisplay();
         winText.SetActive(false); 
         loseText.SetActive(false);
@@ -243,7 +244,7 @@ public class SliderMovement : MonoBehaviour
 
     private IEnumerator BeginNextRound()
     {
-        yield return new WaitForSeconds(nextRoundDelay);
+        yield return new WaitForSecondsRealtime(nextRoundDelay);
         if(!sequenceInProgress)
         {
             yield break;
@@ -264,7 +265,7 @@ public class SliderMovement : MonoBehaviour
 
     private IEnumerator FinishSequence(bool won)
     {
-        yield return new WaitForSeconds(resultDisplayDuration);
+        yield return new WaitForSecondsRealtime(resultDisplayDuration);
 
         miniGameActive = false;
         sequenceInProgress = false;
@@ -282,6 +283,8 @@ public class SliderMovement : MonoBehaviour
         {
             successfulPotion.SetActive(true);
         }
+
+        Time.timeScale = 1f;
         
     }
 
