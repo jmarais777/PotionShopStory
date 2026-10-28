@@ -212,7 +212,7 @@ public class PotionProgressTracker : MonoBehaviour
 
     public string GetSummaryText()
     {
-        return "Cost of ingredients used = " + TotalIngredientCost + "pp.";
+        return "Cost of ingredients used = " + TotalIngredientCost + "pp. Price of items sold = " + TotalPotionsPrice + "pp.";
     }
 
 
