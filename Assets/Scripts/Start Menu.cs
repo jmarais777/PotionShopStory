@@ -21,5 +21,10 @@ public class StartMenu : MonoBehaviour
         Debug.Log("Character bios");
     }
 
+    public void OnControls()
+    {
+        SceneManager.LoadScene("Control Choices");
+    }
+
 }
 
