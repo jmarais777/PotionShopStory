@@ -22,6 +22,9 @@ public class DialogueManager : MonoBehaviour
     public TMP_Text actorName;
     public TMP_Text dialogueText;
 
+    [Header("Audio")]
+    public AudioSource audioSource; // For the voicelines
+
     [Header("Particle Effects")]
     [SerializeField] private ParticleSystem glowParticles;
 
@@ -92,6 +95,13 @@ public class DialogueManager : MonoBehaviour
 
         dialogueText.text = lines.text;
 
+        if (lines.voicelineClip != null)
+        {
+          audioSource.clip = lines.voicelineClip;
+          audioSource.Play();  
+        }
+        
+
         canvasGroup.alpha = 0.8f;
         canvasGroup.interactable = true;
         canvasGroup.blocksRaycasts = true;
@@ -115,6 +125,8 @@ public class DialogueManager : MonoBehaviour
     {
         dialogueIndex = 0;
         isDialogueActive = false;
+
+        audioSource.Stop();
 
         canvasGroup.alpha = 0;
         canvasGroup.interactable = false;

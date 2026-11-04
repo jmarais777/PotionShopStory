@@ -12,6 +12,8 @@ public class DialogueLine
 {
     public ActorSO speaker;
     [TextArea(3, 5)] public string text;
+
+    public AudioClip voicelineClip; // The recorded voicelines
 }
 
 [System.Serializable]

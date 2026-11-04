@@ -74754,7 +74754,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::RedLetterUI
   buttonObject: {fileID: 1630032980}
   redLetter: {fileID: 1263086534}
-  auggieTake: {fileID: 282100133}
   _smoke: {fileID: 618605715}
 --- !u!1 &333063652
 GameObject:
@@ -378027,7 +378026,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: fa2637ef15aa20e4b82776485a180247, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 59f1f9ce2d402154f97e1348a97c14ec, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -694510,6 +694509,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2075530882}
   - component: {fileID: 2075530881}
+  - component: {fileID: 2075530883}
   m_Layer: 0
   m_Name: DialogueManager
   m_TagString: Untagged
@@ -694534,6 +694534,7 @@ MonoBehaviour:
   portrait: {fileID: 1360123789}
   actorName: {fileID: 791903593}
   dialogueText: {fileID: 663854330}
+  audioSource: {fileID: 2075530883}
   glowParticles: {fileID: 0}
   isDialogueActive: 0
 --- !u!4 &2075530882
@@ -694551,6 +694552,103 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &2075530883
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2075530880}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &2075818982
 GameObject:
   m_ObjectHideFlags: 0
@@ -722138,12 +722236,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SliderMovement
   slider: {fileID: 520935640}
   speed: 0.5
-  winMin: 0.33
-  winMax: 0.66
+  safeZoneRect: {fileID: 0}
+  safeZoneWidths:
+  - 0.3
+  - 0.2
+  - 0.1
+  safeZoneCenter: 0.5
   winText: {fileID: 963457775}
   loseText: {fileID: 726591026}
   miniGamePanel: {fileID: 2029958147}
   successfulPotion: {fileID: 1239444289}
+  nextRoundDelay: 0.6
+  resultDisplayDuration: 3
+  round1Text: {fileID: 0}
+  round2Text: {fileID: 0}
+  round3Text: {fileID: 0}
 --- !u!4 &2120171529
 Transform:
   m_ObjectHideFlags: 0

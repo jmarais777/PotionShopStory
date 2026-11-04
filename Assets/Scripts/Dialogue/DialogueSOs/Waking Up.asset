@@ -15,12 +15,17 @@ MonoBehaviour:
   lines:
   - speaker: {fileID: 11400000, guid: f1649f4c6e594e54e8842fea9dd6820c, type: 2}
     text: Ngghhh... does it have to be night already?
-  - speaker: {fileID: 11400000, guid: f1649f4c6e594e54e8842fea9dd6820c, type: 2}
+    voicelineClip: {fileID: 0}
+  - speaker: {fileID: 11400000, guid: 7ee7068f42ab6da40ad5e1965fda60cc, type: 2}
     text: Tonight IS special though... better get started.
+    voicelineClip: {fileID: 0}
   - speaker: {fileID: 11400000, guid: f1649f4c6e594e54e8842fea9dd6820c, type: 2}
     text: ...Better get breakfast too.
-  - speaker: {fileID: 11400000, guid: f1649f4c6e594e54e8842fea9dd6820c, type: 2}
+    voicelineClip: {fileID: 0}
+  - speaker: {fileID: 11400000, guid: d463af12cc8901c46b4335b47aad8dc6, type: 2}
     text: 'How does it go again..? '
+    voicelineClip: {fileID: 0}
   - speaker: {fileID: 11400000, guid: f1649f4c6e594e54e8842fea9dd6820c, type: 2}
     text: "Ah... \u201CCapture here my moonlight, let it become this glow.\u201D"
+    voicelineClip: {fileID: 0}
   nextconvo: []

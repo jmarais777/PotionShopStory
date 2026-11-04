@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8e98260b31352b04a9e0d501ea70639a, type: 3}
-  m_Name: Archibald
+  m_Name: SylvanHappy
   m_EditorClassIdentifier: Assembly-CSharp::ActorSO
-  actorName: Master Augi
-  portrait: {fileID: 21300000, guid: b25e1758aff367149b16258c6969f2da, type: 3}
+  actorName: Sylvan
+  portrait: {fileID: 21300000, guid: cb56e0d58dab7124aa3291f2a06baed4, type: 3}

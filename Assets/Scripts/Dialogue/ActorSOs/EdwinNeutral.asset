@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8e98260b31352b04a9e0d501ea70639a, type: 3}
-  m_Name: Sylvan
+  m_Name: EdwinNeutral
   m_EditorClassIdentifier: Assembly-CSharp::ActorSO
-  actorName: Sylvan
-  portrait: {fileID: 21300000, guid: 8fdc1f1889189c24a8491c64764d817d, type: 3}
+  actorName: Edwin
+  portrait: {fileID: 21300000, guid: 51b54eeafa8e5324baa956fcba83e2c3, type: 3}

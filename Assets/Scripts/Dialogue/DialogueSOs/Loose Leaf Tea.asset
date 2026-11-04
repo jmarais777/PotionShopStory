@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Loose Leaf Tea
   m_EditorClassIdentifier: Assembly-CSharp::DialogueSO
   lines:
-  - speaker: {fileID: 11400000, guid: f1649f4c6e594e54e8842fea9dd6820c, type: 2}
+  - speaker: {fileID: 11400000, guid: 7ee7068f42ab6da40ad5e1965fda60cc, type: 2}
     text: "He can\u2019t find out it\u2019s not loose leaf\u2026 (giggles) but it
       would be funny to see the look on his face."
+    voicelineClip: {fileID: 0}
   nextconvo: []
