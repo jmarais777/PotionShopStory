@@ -77,9 +77,12 @@ public void OnEButton(InputAction.CallbackContext context) //when the E button i
 {
     if(context.performed && playerInBox && !hasPlayed) //if the E button is pressed, and the player is in the box collider, and if the player has not performed this action, and if the letter exists
     {
+        redLetter.transform.position = new Vector3(22.9f, 0.6f, 8.5f);
+        Debug.Log("Teleport!");
         hasPlayed = true; //confirm player has done this action now
+        buttonObject.SetActive(false);
         //auggieTake.SetActive(true); //Auggie's dialogue appears
-        redLetter.SetActive(false); //letter disappears
+        //redLetter.SetActive(false); //letter disappears
         source.Play(); //play woosh sound
         _smoke.Play();
     }

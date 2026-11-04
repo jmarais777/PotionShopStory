@@ -29,6 +29,15 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Characters.unity
     guid: 066abcdfa1d22a143a07c201d31b6361
+  - enabled: 1
+    path: Assets/Scenes/Controls Menu/Control Choices.unity
+    guid: 0fb524f0344d7fa478411801532d22a1
+  - enabled: 1
+    path: Assets/Scenes/Controls Menu/Keyboard Controls.unity
+    guid: 327b7c929d645d149be12a219f58fb17
+  - enabled: 1
+    path: Assets/Scenes/Controls Menu/Gamepad Controls.unity
+    guid: 2bc6f1d738179cd4eb73852c00122f5f
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0
