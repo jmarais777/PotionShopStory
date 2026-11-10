@@ -72078,7 +72078,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::RedLetterUI
   buttonObject: {fileID: 1630032980}
   redLetter: {fileID: 1263086534}
-  auggieTake: {fileID: 282100133}
   _smoke: {fileID: 618605715}
 --- !u!1 &333063652
 GameObject:
@@ -635677,6 +635676,7 @@ MonoBehaviour:
   - AirPotion
   - SleepPotion
   - SunPotion
+  doorBlocker: {fileID: 0}
 --- !u!4 &1946523975
 Transform:
   m_ObjectHideFlags: 0
@@ -695994,12 +695994,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SliderMovement
   slider: {fileID: 520935640}
   speed: 0.5
-  winMin: 0.33
-  winMax: 0.66
+  safeZoneRect: {fileID: 0}
+  safeZoneWidths:
+  - 0.3
+  - 0.2
+  - 0.1
+  safeZoneCenter: 0.5
   winText: {fileID: 963457775}
   loseText: {fileID: 726591026}
   miniGamePanel: {fileID: 2029958147}
   successfulPotion: {fileID: 1239444289}
+  nextRoundDelay: 0.6
+  resultDisplayDuration: 3
+  round1Text: {fileID: 0}
+  round2Text: {fileID: 0}
+  round3Text: {fileID: 0}
 --- !u!4 &2120171529
 Transform:
   m_ObjectHideFlags: 0
@@ -702441,8 +702450,8 @@ Transform:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
-  - {fileID: 191714270}
   - {fileID: 2049426565}
+  - {fileID: 191714270}
   - {fileID: 378895351}
   - {fileID: 1206650389}
   - {fileID: 2075530882}
