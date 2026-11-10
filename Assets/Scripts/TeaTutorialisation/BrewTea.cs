@@ -33,6 +33,7 @@ public class BrewTea : MonoBehaviour
     [Header("Kettle Boil Audio")]
     [SerializeField] private AudioSource KettleBoil;
 
+
     [Header("GameObjects")]
     [SerializeField] private GameObject Brewing;
     [SerializeField] private GameObject Brewed;
@@ -72,6 +73,11 @@ public class BrewTea : MonoBehaviour
         if (other.CompareTag(playerTag))
         {
             _isPlayerInRange = true;
+            return;
+        }
+
+        if(other.GetComponent<CupNoise>() != null)
+        {
             return;
         }
 

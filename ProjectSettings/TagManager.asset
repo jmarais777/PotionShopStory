@@ -11,6 +11,7 @@ TagManager:
   - SunPotion
   - SoothePotion
   - FirstPersonModel
+  - Tea
   layers:
   - Default
   - TransparentFX

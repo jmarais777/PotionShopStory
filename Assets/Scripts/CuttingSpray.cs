@@ -13,6 +13,7 @@ public class CuttingSpray : MonoBehaviour
 {
     [SerializeField] ParticleSystem yellowSpray = null; //get the yellow spray effect
     [SerializeField] ParticleSystem blueSpray = null; // get the blue spray effect
+    [SerializeField] AudioSource crushNoise;
 
     private GameObject ingredientAObject;
     private GameObject ingredientBObject;
@@ -104,6 +105,7 @@ public class CuttingSpray : MonoBehaviour
             if(yellowSpray != null)
             {
                 yellowSpray.Play();
+                crushNoise.Play();
             }
             if(blueSpray != null)
             {
@@ -115,6 +117,7 @@ public class CuttingSpray : MonoBehaviour
             if(blueSpray != null)
             {
                 blueSpray.Play();
+                crushNoise.Play();
             }
             if(yellowSpray != null)
             {

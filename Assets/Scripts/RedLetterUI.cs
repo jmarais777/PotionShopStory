@@ -50,7 +50,7 @@ public class RedLetterUI : MonoBehaviour
         if(other.CompareTag("Player")) //specifically the player, and if the letter exists
         {
             playerInBox = true; //condition is met
-            if(redLetter != null && redLetter.activeSelf) //check if the "physical" letter is active
+            if(redLetter != null && redLetter.activeSelf && !hasPlayed) //check if the "physical" letter is active
             {
                 buttonObject.SetActive(true); //prompts appear
 

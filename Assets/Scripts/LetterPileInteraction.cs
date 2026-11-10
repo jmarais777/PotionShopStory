@@ -111,6 +111,8 @@ public class LetterPileInteraction : MonoBehaviour
         letterUI[currentLetter].SetActive(true);
         letterUIOpen = true;
 
+        Time.timeScale = 0f;
+
     }
 
     private void CloseCurrentLetterUI()
@@ -121,6 +123,8 @@ public class LetterPileInteraction : MonoBehaviour
         }
 
         letterUIOpen = false;
+
+        Time.timeScale = 1f;
 
     }
 
