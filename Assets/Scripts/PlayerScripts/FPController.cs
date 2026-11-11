@@ -205,12 +205,19 @@ public class FPController : MonoBehaviour
                 {
                     pickUp.PickUp(holdPoint);
                     heldObject = pickUp;
-                }
-            }
 
-            if (heldObject.name == "Teabag")
-            {
-                heldObject.GetComponent<DialogueTrigger>().Play();
+                    // Check if the picked-up object is the Teabag
+                    if (heldObject.gameObject.name == "Teabag")
+                    {
+                        DialogueTrigger dialogue =
+                            heldObject.GetComponent<DialogueTrigger>();
+
+                        if (dialogue != null)
+                        {
+                            dialogue.Play();
+                        }
+                    }
+                }
             }
         }
         else
