@@ -1,0 +1,78 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a86b7ce1503355f4cb0bb747cd4d2630, type: 3}
+  m_Name: EdwinDialogue
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueSO
+  lines:
+  - speaker: {fileID: 11400000, guid: 7ee7068f42ab6da40ad5e1965fda60cc, type: 2}
+    text: "Well, that was the last of the orders, it was a slow day. You\u2019re
+      free to go\u2026 uhhh\u2026 I\u2019m sorry\u2026 What did you say your name
+      was again?"
+    voicelineClip: {fileID: 0}
+  - speaker: {fileID: 11400000, guid: 343c1a7568ab6a54abe74fc3128a6213, type: 2}
+    text: "Oh h-hi there, uhm\u2026 I didn\u2019t (nervous laugh). My name is Midwin
+      Eddleton\u2026 AHHH I MEAN EDWIN MIDDLETON (louder nervous laugh)."
+    voicelineClip: {fileID: 8300000, guid: a1b3884b54c07504e89695b6382a0b45, type: 3}
+  - speaker: {fileID: 11400000, guid: 3319343b09712944c9bbf36eee5df2e4, type: 2}
+    text: "I am your personal mail-bird for tonight\u2019s Snails Mail deliveries. "
+    voicelineClip: {fileID: 8300000, guid: 6154d254c5653d447a62310d5d2340a5, type: 3}
+  - speaker: {fileID: 11400000, guid: 3319343b09712944c9bbf36eee5df2e4, type: 2}
+    text: "We might be slow, but we\u2019ll get your mail where it needs to go\u201D
+      (Less nervous laugh)!"
+    voicelineClip: {fileID: 8300000, guid: 29027304ddad4dd4c86727cd0c3c3783, type: 3}
+  - speaker: {fileID: 11400000, guid: f1649f4c6e594e54e8842fea9dd6820c, type: 2}
+    text: "It\u2019s nice to meet you Edwin, you know\u2026 you could have come back
+      closer to sunrise, if it were a busier day you\u2019d have been here a whiiiile\u2026"
+    voicelineClip: {fileID: 0}
+  - speaker: {fileID: 11400000, guid: 3319343b09712944c9bbf36eee5df2e4, type: 2}
+    text: "Not at all, at Snails Mail we\u2019re responsible for your mail every
+      step of the way. I have to be here. It\u2019s our code"
+    voicelineClip: {fileID: 8300000, guid: e812386557d658149bb43c34ec9c7321, type: 3}
+  - speaker: {fileID: 11400000, guid: 3319343b09712944c9bbf36eee5df2e4, type: 2}
+    text: "Besides\u2026 I really can NOT afford to lose this job, not after the
+      incident with the broomer driver and my wing\u2026"
+    voicelineClip: {fileID: 8300000, guid: cf4981535016d6f428e2c9e3009792c0, type: 3}
+  - speaker: {fileID: 11400000, guid: 343c1a7568ab6a54abe74fc3128a6213, type: 2}
+    text: I mean even if my wing were alright, just the thought of flying for Featherfall
+      Couriers again makes my head spin.
+    voicelineClip: {fileID: 8300000, guid: 03a9906b51e89ca4fb996dc5723e3eb0, type: 3}
+  - speaker: {fileID: 11400000, guid: 3319343b09712944c9bbf36eee5df2e4, type: 2}
+    text: "No, best to stay with Snails mail, it's a good job. It\u2019s an on the
+      ground job."
+    voicelineClip: {fileID: 8300000, guid: f7853db721c915f44a8139996d033735, type: 3}
+  - speaker: {fileID: 11400000, guid: d463af12cc8901c46b4335b47aad8dc6, type: 2}
+    text: "Oh wow, okay. That was a lot\u2026 It\u2019s good to hear that you landed
+      on your own two feet though\u2026 ah.. ahah\u2026"
+    voicelineClip: {fileID: 0}
+  - speaker: {fileID: 11400000, guid: 3319343b09712944c9bbf36eee5df2e4, type: 2}
+    text: "There I go and do it again, sorry\u2026 I tend to ramble when I\u2019m
+      nervous\u2026 I\u2019m a rambler."
+    voicelineClip: {fileID: 8300000, guid: 308fce01c6e333b41add4586404d549e, type: 3}
+  - speaker: {fileID: 11400000, guid: 343c1a7568ab6a54abe74fc3128a6213, type: 2}
+    text: "Let me get going, I\u2019ll just grab these potions, and OWWW my wiiing!!!
+      I must have hurt it again."
+    voicelineClip: {fileID: 8300000, guid: 92b58e23851bc6642a7e2d94bcea2379, type: 3}
+  - speaker: {fileID: 11400000, guid: 343c1a7568ab6a54abe74fc3128a6213, type: 2}
+    text: "Crumbs, now I\u2019ll need to take another day off. Great job Middleton,
+      great job."
+    voicelineClip: {fileID: 8300000, guid: f829edff988abdb4680b8896cc750091, type: 3}
+  - speaker: {fileID: 11400000, guid: d463af12cc8901c46b4335b47aad8dc6, type: 2}
+    text: "Look, I can\u2019t help feeling I\u2019m partly responsible\u2026 somehow\u2026
+      Take this Potion of Soothing, it will help. It wasn\u2019t meant for anyone
+      anyway. It's my first ever potion"
+    voicelineClip: {fileID: 0}
+  - speaker: {fileID: 11400000, guid: 8540bb2edc3b44c45b41bd02a90bc55a, type: 2}
+    text: "No. No\u2026 I couldn\u2019t\u2026 You really mean that? Really? Thank
+      you. You have no idea how much you\u2019re saving my tail feathers here. I
+      won\u2019t forget this, honest."
+    voicelineClip: {fileID: 8300000, guid: 24088e7a3cbfb05469a391e1724812ed, type: 3}
+  nextconvo: []
