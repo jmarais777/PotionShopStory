@@ -93,6 +93,12 @@ public class BrewTea : MonoBehaviour
     {
         if (other.CompareTag(playerTag))
         {
+            // Check the recipe as the player walks away
+            if (IsRecipeFulfilled())
+            {
+                PlayBrewSuccess();
+            }
+
             _isPlayerInRange = false;
             return;
         }
@@ -121,50 +127,32 @@ public class BrewTea : MonoBehaviour
 
         Debug.Log("The tea is being brewed!");
 
-        ingredientsInCup.RemoveAll(g => g == null || !g.activeInHierarchy); // getting rid of disabled game objects
-
-        List<string> namesInCauldron = ingredientsInCup.Select(g => PlainName(g.name)).ToList();
-
-
-        bool success = currentRecipe.requiredIngredientNames.All(required => namesInCauldron.Contains(required)) && (namesInCauldron.Count == currentRecipe.requiredIngredientNames.Count);
-        //                     && namesInCauldron.Count == currentRecipe.requiredIngredientNames.Count;
-
-        if (success)
+        if (IsRecipeFulfilled())
         {
-            Debug.Log($"Success! You have all you need for a {currentRecipe.potionName}");
-            KettleBoil.Play();
-            if (teaSteam != null)
-            {
-                teaSteam.Play();
-
-            }
-
-            StartCoroutine(StopSteamWhenWhistlingEnds());
-            
+            PlayBrewSuccess();
         }
-        else if (namesInCauldron.Contains("kettle"))
-            {
+        else if (ingredientsInCup.Any(g => PlainName(g.name) == "kettle"))
+        {
             Brewing.transform.position = _targetPosition;
             Brewed.SetActive(true);
 
             isTeaComplete = true; // Once the tea is brewed, it'll be true
 
-             foreach (GameObject i in ingredientsInCup)
-        {
-            i.SetActive(false);
-        }
+            foreach (GameObject i in ingredientsInCup)
+            {
+                i.SetActive(false);
+            }
             MagicKettle.SetActive(true);
         }
         else
         {
             Debug.Log("Brewing failed.");
         }
-
     }
 
     private IEnumerator StopSteamWhenWhistlingEnds()
     {
-        while(KettleBoil.isPlaying)
+        while (KettleBoil.isPlaying)
         {
             yield return null;
         }
@@ -173,5 +161,35 @@ public class BrewTea : MonoBehaviour
             teaSteam.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
             _stoveLight.SetActive(false);
         }
+    }
+
+    private bool IsRecipeFulfilled()
+    {
+        if (currentRecipe == null) return false;
+
+        // Remove destroyed/disabled objects first
+        ingredientsInCup.RemoveAll(g => g == null || !g.activeInHierarchy);
+
+        List<string> names = ingredientsInCup.Select(g => PlainName(g.name)).ToList();
+
+        return currentRecipe.requiredIngredientNames.All(required => names.Contains(required))
+               && names.Count == currentRecipe.requiredIngredientNames.Count;
+    }
+
+    private void PlayBrewSuccess()
+    {
+        Debug.Log($"Success! You have all you need for a {currentRecipe.potionName}");
+
+        if (KettleBoil != null && !KettleBoil.isPlaying)
+        {
+            KettleBoil.Play();
+        }
+
+        if (teaSteam != null)
+        {
+            teaSteam.Play();
+        }
+
+        StartCoroutine(StopSteamWhenWhistlingEnds());
     }
 }
