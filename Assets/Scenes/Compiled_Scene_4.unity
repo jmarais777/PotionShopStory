@@ -236962,7 +236962,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0.14549609, y: -0.6877321, z: 0.14721005, w: 0.69583386}
   m_LocalPosition: {x: 16.2754, y: 0.3329, z: 0.4815}
-  m_LocalScale: {x: 0.0016821506, y: 0.057607897, z: 0.057607897}
+  m_LocalScale: {x: 0.007797168, y: 0.057607897, z: 0.057607897}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -339573,7 +339573,7 @@ MeshCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 5
   m_Convex: 0
   m_CookingOptions: 30
@@ -444011,7 +444011,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 6.0985894, y: 27.5, z: 2.3101854}
+  m_Size: {x: 6.0985894, y: 27.69, z: 2.3101854}
   m_Center: {x: 2.5892947, y: 14, z: -0.12544851}
 --- !u!65 &1329196898
 BoxCollider:

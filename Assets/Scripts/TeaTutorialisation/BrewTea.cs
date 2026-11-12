@@ -157,10 +157,17 @@ public class BrewTea : MonoBehaviour
 
         ingredientsInCup.RemoveAll(g => g == null || !g.activeInHierarchy);
 
-        List<string> names = ingredientsInCup.Select(g => PlainName(g.name)).ToList();
+        // How many of each ingredient are in the cup
+        Dictionary<string, int> have = ingredientsInCup
+            .GroupBy(g => PlainName(g.name))
+            .ToDictionary(grp => grp.Key, grp => grp.Count());
 
-        // Every required ingredient must be present; extra objects (including the kettle) are ignored
-        return currentRecipe.requiredIngredientNames.All(required => names.Contains(required));
+        // How many of each ingredient the recipe needs
+        var need = currentRecipe.requiredIngredientNames
+            .GroupBy(n => n)
+            .ToDictionary(grp => grp.Key, grp => grp.Count());
+
+        return need.All(kvp => have.TryGetValue(kvp.Key, out int count) && count >= kvp.Value);
     }
 
     private bool IsKettleNearby()
