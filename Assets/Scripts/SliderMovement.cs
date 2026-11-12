@@ -47,7 +47,9 @@ public class SliderMovement : MonoBehaviour
     public GameObject miniGamePanel;
 
     [Header("Win Event")]
-    [SerializeField] private GameObject successfulPotion;
+    [SerializeField] private GameObject successfulPotion1;
+    [SerializeField] private GameObject successfulPotion2;
+    private int potionsAwarded;
 
     [Header("Round Timing")]
     [SerializeField] private float nextRoundDelay = 0.6f;
@@ -98,27 +100,20 @@ public class SliderMovement : MonoBehaviour
 
         }
 
-
-        if(successfulPotion != null)
-        {
-            successfulPotion.SetActive(false);
-        }
-
         if(miniGamePanel != null)
         {
             miniGamePanel.SetActive(false);
 
         }
 
-        if(successfulPotion != null)
-        {
-            successfulPotion.SetActive(false);
-        }
-
         if(safeZoneRect == null)
         {
             Debug.Log("Safe zone rect is not assigned. The green zone will not resize automatically", this);
         }
+
+        if (successfulPotion1 != null) successfulPotion1.SetActive(false);
+        
+        if (successfulPotion2 != null) successfulPotion2.SetActive(false);
     }
 
     // Update is called once per frame
@@ -145,7 +140,6 @@ public class SliderMovement : MonoBehaviour
         UpdateRoundDisplay();
         winText.SetActive(false); 
         loseText.SetActive(false);
-        successfulPotion.SetActive(false);
         miniGamePanel.SetActive(true);
         BeginRound();
 
@@ -279,9 +273,17 @@ public class SliderMovement : MonoBehaviour
         {
             loseText.SetActive(false);
         }
-        if(won && successfulPotion != null)
+        if (won)
         {
-            successfulPotion.SetActive(true);
+            if (potionsAwarded == 0 && successfulPotion1 != null)
+            {
+                successfulPotion1.SetActive(true);
+            }
+            else if (potionsAwarded == 1 && successfulPotion2 != null)
+            {
+                successfulPotion2.SetActive(true);
+            }
+            potionsAwarded++;
         }
 
         Time.timeScale = 1f;
