@@ -83030,6 +83030,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CuttingSpray
   yellowSpray: {fileID: 1053987092}
   blueSpray: {fileID: 106623335}
+  crushNoise: {fileID: 0}
 --- !u!4 &164960989
 Transform:
   m_ObjectHideFlags: 0
@@ -315400,6 +315401,7 @@ MonoBehaviour:
   outcomeDisplayDuration: 2
   successParticles: {fileID: 930888064}
   failureParticles: {fileID: 1992229049}
+  splashNoise: {fileID: 0}
 --- !u!65 &886265468
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -679394,6 +679396,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CuttingSpray
   yellowSpray: {fileID: 1361439490}
   blueSpray: {fileID: 10877517}
+  crushNoise: {fileID: 0}
 --- !u!4 &2069210069
 Transform:
   m_ObjectHideFlags: 0
