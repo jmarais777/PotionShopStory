@@ -93,13 +93,15 @@ public class BrewTea : MonoBehaviour
     {
         if (other.CompareTag(playerTag))
         {
-            // Check the recipe as the player walks away
-            if (IsRecipeFulfilled())
+            _isPlayerInRange = false;
+
+            if (currentRecipe == null) return;
+
+            // Whistle plays as the player leaves, if all ingredients are in the cup
+            if (AllIngredientsInCup())
             {
                 PlayBrewSuccess();
             }
-
-            _isPlayerInRange = false;
             return;
         }
 
@@ -123,26 +125,12 @@ public class BrewTea : MonoBehaviour
     private void OnInteractPerformed(InputAction.CallbackContext context)
     {
         if (!_isPlayerInRange) return;
-        if (currentRecipe == null) return; // makin sure there is a recipe attached
+        if (currentRecipe == null) return;
 
-        Debug.Log("The tea is being brewed!");
-
-        if (IsRecipeFulfilled())
+        // Brewed needs all ingredients in the cup AND the kettle nearby
+        if (AllIngredientsInCup() && IsKettleNearby())
         {
-            PlayBrewSuccess();
-        }
-        else if (ingredientsInCup.Any(g => PlainName(g.name) == "kettle"))
-        {
-            Brewing.transform.position = _targetPosition;
-            Brewed.SetActive(true);
-
-            isTeaComplete = true; // Once the tea is brewed, it'll be true
-
-            foreach (GameObject i in ingredientsInCup)
-            {
-                i.SetActive(false);
-            }
-            MagicKettle.SetActive(true);
+            CompleteBrew();
         }
         else
         {
@@ -163,17 +151,36 @@ public class BrewTea : MonoBehaviour
         }
     }
 
-    private bool IsRecipeFulfilled()
+    private bool AllIngredientsInCup()
     {
         if (currentRecipe == null) return false;
 
-        // Remove destroyed/disabled objects first
         ingredientsInCup.RemoveAll(g => g == null || !g.activeInHierarchy);
 
         List<string> names = ingredientsInCup.Select(g => PlainName(g.name)).ToList();
 
-        return currentRecipe.requiredIngredientNames.All(required => names.Contains(required))
-               && names.Count == currentRecipe.requiredIngredientNames.Count;
+        // Every required ingredient must be present; extra objects (including the kettle) are ignored
+        return currentRecipe.requiredIngredientNames.All(required => names.Contains(required));
+    }
+
+    private bool IsKettleNearby()
+    {
+        ingredientsInCup.RemoveAll(g => g == null || !g.activeInHierarchy);
+        return ingredientsInCup.Any(g => PlainName(g.name) == "kettle");
+    }
+
+    private void CompleteBrew()
+    {
+        Brewing.transform.position = _targetPosition;
+        Brewed.SetActive(true);
+
+        isTeaComplete = true;
+
+        foreach (GameObject i in ingredientsInCup)
+        {
+            i.SetActive(false);
+        }
+        MagicKettle.SetActive(true);
     }
 
     private void PlayBrewSuccess()
