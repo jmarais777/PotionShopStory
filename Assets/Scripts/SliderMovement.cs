@@ -186,8 +186,9 @@ public class SliderMovement : MonoBehaviour
 
     public void OnSpace(InputAction.CallbackContext context) //call space input 
     {
+        if (!context.performed || !miniGameActive) return;
 
-        if(context.performed) //if spacebar is pressed
+        if (context.performed) //if spacebar is pressed
         {
             miniGameActive = false; //stop movement
             Debug.Log("Space pressed!");
