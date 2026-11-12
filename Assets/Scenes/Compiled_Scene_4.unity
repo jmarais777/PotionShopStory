@@ -443818,7 +443818,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 6.0985894, y: 27.630001, z: 2.3101854}
+  m_Size: {x: 6.0985894, y: 29.6, z: 2.3101854}
   m_Center: {x: 2.5892947, y: 14, z: -0.12544851}
 --- !u!65 &1329196898
 BoxCollider:
