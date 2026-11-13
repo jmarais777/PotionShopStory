@@ -16,6 +16,12 @@ using System.Collections.Generic;
 //Code version: Unity 2020.3.32f1
 //Availability: https://www.youtube.com/watch?v=x2qiWGcLku0
 
+//Title: HOW TO TELEPORT OBJECTS IN UNITY | Teleport Player and GameObjects in Unity | Unity Tutorial
+//Author: Dani Krossing
+//Date: 7 December 2021
+//Code version: Unity 2020.3.13f1
+//Acessibility: https://www.youtube.com/watch?v=xmhm5jGwonc 
+
 
 public class RedLetterUI : MonoBehaviour
 {
@@ -50,7 +56,7 @@ public class RedLetterUI : MonoBehaviour
         if(other.CompareTag("Player")) //specifically the player, and if the letter exists
         {
             playerInBox = true; //condition is met
-            if(redLetter != null && redLetter.activeSelf) //check if the "physical" letter is active
+            if(redLetter != null && redLetter.activeSelf && !hasPlayed) //check if the "physical" letter is active
             {
                 buttonObject.SetActive(true); //prompts appear
 

@@ -29,6 +29,10 @@ public class Cauldron : MonoBehaviour
     [SerializeField] private ParticleSystem successParticles;
     [SerializeField] private ParticleSystem failureParticles;
 
+   
+    [Header("SFX")]
+    [SerializeField] private AudioSource splashNoise;
+
     private List<GameObject> ingredientsInCauldron = new List<GameObject>();
 
     private void OnEnable()
@@ -57,6 +61,7 @@ public class Cauldron : MonoBehaviour
         }
 
         Debug.Log("Ingredient entered: " + other.gameObject.name); // this was just for testing purposes to ensure it was detected correctly
+        splashNoise.Play();
     }
 
     private void OnTriggerExit(Collider other)

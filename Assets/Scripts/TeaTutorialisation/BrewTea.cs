@@ -33,6 +33,7 @@ public class BrewTea : MonoBehaviour
     [Header("Kettle Boil Audio")]
     [SerializeField] private AudioSource KettleBoil;
 
+
     [Header("GameObjects")]
     [SerializeField] private GameObject Brewing;
     [SerializeField] private GameObject Brewed;
@@ -75,6 +76,11 @@ public class BrewTea : MonoBehaviour
             return;
         }
 
+        if(other.GetComponent<CupNoise>() != null)
+        {
+            return;
+        }
+
         if (!ingredientsInCup.Contains(other.gameObject))
         {
             ingredientsInCup.Add(other.gameObject);
@@ -88,6 +94,14 @@ public class BrewTea : MonoBehaviour
         if (other.CompareTag(playerTag))
         {
             _isPlayerInRange = false;
+
+            if (currentRecipe == null) return;
+
+            // Whistle plays as the player leaves, if all ingredients are in the cup
+            if (AllIngredientsInCup())
+            {
+                PlayBrewSuccess();
+            }
             return;
         }
 
@@ -111,54 +125,22 @@ public class BrewTea : MonoBehaviour
     private void OnInteractPerformed(InputAction.CallbackContext context)
     {
         if (!_isPlayerInRange) return;
-        if (currentRecipe == null) return; // makin sure there is a recipe attached
+        if (currentRecipe == null) return;
 
-        Debug.Log("The tea is being brewed!");
-
-        ingredientsInCup.RemoveAll(g => g == null || !g.activeInHierarchy); // getting rid of disabled game objects
-
-        List<string> namesInCauldron = ingredientsInCup.Select(g => PlainName(g.name)).ToList();
-
-
-        bool success = currentRecipe.requiredIngredientNames.All(required => namesInCauldron.Contains(required)) && (namesInCauldron.Count == currentRecipe.requiredIngredientNames.Count);
-        //                     && namesInCauldron.Count == currentRecipe.requiredIngredientNames.Count;
-
-        if (success)
+        // Brewed needs all ingredients in the cup AND the kettle nearby
+        if (AllIngredientsInCup() && IsKettleNearby())
         {
-            Debug.Log($"Success! You have all you need for a {currentRecipe.potionName}");
-            KettleBoil.Play();
-            if (teaSteam != null)
-            {
-                teaSteam.Play();
-
-            }
-
-            StartCoroutine(StopSteamWhenWhistlingEnds());
-            
-        }
-        else if (namesInCauldron.Contains("kettle"))
-            {
-            Brewing.transform.position = _targetPosition;
-            Brewed.SetActive(true);
-
-            isTeaComplete = true; // Once the tea is brewed, it'll be true
-
-             foreach (GameObject i in ingredientsInCup)
-        {
-            i.SetActive(false);
-        }
-            MagicKettle.SetActive(true);
+            CompleteBrew();
         }
         else
         {
             Debug.Log("Brewing failed.");
         }
-
     }
 
     private IEnumerator StopSteamWhenWhistlingEnds()
     {
-        while(KettleBoil.isPlaying)
+        while (KettleBoil.isPlaying)
         {
             yield return null;
         }
@@ -167,5 +149,61 @@ public class BrewTea : MonoBehaviour
             teaSteam.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
             _stoveLight.SetActive(false);
         }
+    }
+
+    private bool AllIngredientsInCup()
+    {
+        if (currentRecipe == null) return false;
+
+        ingredientsInCup.RemoveAll(g => g == null || !g.activeInHierarchy);
+
+        // How many of each ingredient are in the cup
+        Dictionary<string, int> have = ingredientsInCup
+            .GroupBy(g => PlainName(g.name))
+            .ToDictionary(grp => grp.Key, grp => grp.Count());
+
+        // How many of each ingredient the recipe needs
+        var need = currentRecipe.requiredIngredientNames
+            .GroupBy(n => n)
+            .ToDictionary(grp => grp.Key, grp => grp.Count());
+
+        return need.All(kvp => have.TryGetValue(kvp.Key, out int count) && count >= kvp.Value);
+    }
+
+    private bool IsKettleNearby()
+    {
+        ingredientsInCup.RemoveAll(g => g == null || !g.activeInHierarchy);
+        return ingredientsInCup.Any(g => PlainName(g.name) == "kettle");
+    }
+
+    private void CompleteBrew()
+    {
+        Brewing.transform.position = _targetPosition;
+        Brewed.SetActive(true);
+
+        isTeaComplete = true;
+
+        foreach (GameObject i in ingredientsInCup)
+        {
+            i.SetActive(false);
+        }
+        MagicKettle.SetActive(true);
+    }
+
+    private void PlayBrewSuccess()
+    {
+        Debug.Log($"Success! You have all you need for a {currentRecipe.potionName}");
+
+        if (KettleBoil != null && !KettleBoil.isPlaying)
+        {
+            KettleBoil.Play();
+        }
+
+        if (teaSteam != null)
+        {
+            teaSteam.Play();
+        }
+
+        StartCoroutine(StopSteamWhenWhistlingEnds());
     }
 }

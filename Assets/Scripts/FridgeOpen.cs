@@ -54,6 +54,47 @@ public class FridgeOpen : MonoBehaviour
         }
     }
 
+   // private void Update()
+    //{
+       // if(Mouse.current == null)
+      //  {
+           // Debug.Log("Mouse not detected");
+          //  return;
+
+       // }
+       // if(!Mouse.current.leftButton.wasPressedThisFrame)
+       // {
+       //     return;
+       // }
+      //  Debug.Log("Mouse click detected");
+
+      //  if(playerCamera == null || doorAnimator == null)
+      //  {
+       //     Debug.Log("Camera or animator is missing");
+       //     return;
+      //  }
+
+       // Ray ray = playerCamera.ScreenPointToRay(
+      //      Mouse.current.position.ReadValue()
+      //  );
+
+       // if(Physics.Raycast(ray, out RaycastHit hit))
+      //  {
+           // Debug.Log("Raycast hit " + hit.transform.name);
+
+           // if(hit.transform == transform || hit.transform.IsChildOf(transform))
+           // {
+             //   Debug.Log("Door is hit");
+             //   ToggleDoor();
+           // }
+        //}
+        //else
+       // {
+          //  Debug.Log("Raycast missed");
+        
+       // }
+    //}
+
 
     private void Update()
     {
