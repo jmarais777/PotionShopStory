@@ -19,10 +19,10 @@ MonoBehaviour:
   - speaker: {fileID: 11400000, guid: f1649f4c6e594e54e8842fea9dd6820c, type: 2}
     text: "Don\u2019t even sweat it Master Augi, I\u2019ll get the mop from the supply
       closet."
-    voicelineClip: {fileID: 0}
+    voicelineClip: {fileID: 8300000, guid: 52d15ee566a7f304db13f1e3dd48effb, type: 3}
   - speaker: {fileID: 11400000, guid: 7ee7068f42ab6da40ad5e1965fda60cc, type: 2}
     text: "Hehe\u2026 between you and me, this happens more often than you\u2019d
       think\u2026 short arms\u2026 Anyhow, I gotta go handle that cleanup. I\u2019ll
       see you around, Edwin."
-    voicelineClip: {fileID: 0}
+    voicelineClip: {fileID: 8300000, guid: ad6b9bfcc873c20448047d17e62542a0, type: 3}
   nextconvo: []

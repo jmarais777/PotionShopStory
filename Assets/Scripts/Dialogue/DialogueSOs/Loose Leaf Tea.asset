@@ -16,5 +16,5 @@ MonoBehaviour:
   - speaker: {fileID: 11400000, guid: 7ee7068f42ab6da40ad5e1965fda60cc, type: 2}
     text: "He can\u2019t find out it\u2019s not loose leaf\u2026 (giggles) but it
       would be funny to see the look on his face."
-    voicelineClip: {fileID: 0}
+    voicelineClip: {fileID: 8300000, guid: f45dfff14a20f0d42bc83f218f2a4fe0, type: 3}
   nextconvo: []
