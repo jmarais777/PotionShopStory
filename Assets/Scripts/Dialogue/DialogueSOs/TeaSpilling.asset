@@ -15,7 +15,7 @@ MonoBehaviour:
   lines:
   - speaker: {fileID: 11400000, guid: 9bfa81a66ad010b499e1510a12b00410, type: 2}
     text: "Oh dear\u2026 I seem to have spilled your lovely tea, Sylvan"
-    voicelineClip: {fileID: 0}
+    voicelineClip: {fileID: 8300000, guid: 2224eff2e868cd34baf92edc9aabbd28, type: 3}
   - speaker: {fileID: 11400000, guid: f1649f4c6e594e54e8842fea9dd6820c, type: 2}
     text: "Don\u2019t even sweat it Master Augi, I\u2019ll get the mop from the supply
       closet."
