@@ -95,6 +95,8 @@ public class DialogueManager : MonoBehaviour
 
         dialogueText.text = lines.text;
 
+        audioSource.Stop(); // cuts off the audio voiceline as soon as the player presses advance
+
         if (lines.voicelineClip != null)
         {
           audioSource.clip = lines.voicelineClip;
