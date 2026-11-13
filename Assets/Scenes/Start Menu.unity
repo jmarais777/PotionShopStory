@@ -1070,7 +1070,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HeadphonesMessage
   overlay: {fileID: 797915689}
-  holdOverlay: 4
+  holdOverlay: 3
   fadeDuration: 3
 --- !u!225 &797915689
 CanvasGroup:
