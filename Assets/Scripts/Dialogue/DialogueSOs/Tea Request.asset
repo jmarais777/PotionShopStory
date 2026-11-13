@@ -20,7 +20,7 @@ MonoBehaviour:
     text: Two sugars?
     voicelineClip: {fileID: 0}
   - speaker: {fileID: 11400000, guid: 37b8dbe7a026ab442a66fd0684724826, type: 2}
-    text: Mhmm... Yes. Two sugars if you will.
+    text: Mhmm... Yes. Two sugars please.
     voicelineClip: {fileID: 8300000, guid: 7aac457ad123124478bd61bcea61ff3b, type: 3}
   - speaker: {fileID: 11400000, guid: 7ee7068f42ab6da40ad5e1965fda60cc, type: 2}
     text: One Sylvan special coming right up!
