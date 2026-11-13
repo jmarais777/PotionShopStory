@@ -16,4 +16,5 @@ MonoBehaviour:
   - speaker: {fileID: 11400000, guid: 37b8dbe7a026ab442a66fd0684724826, type: 2}
     text: I know you're excited to get started, but first, my tea please, Sylvan.
       Remember, 2 sugars.
+    voicelineClip: {fileID: 8300000, guid: 37d077973b367f940bab6a97097cb70d, type: 3}
   nextconvo: []

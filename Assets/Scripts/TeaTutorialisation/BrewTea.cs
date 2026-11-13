@@ -76,6 +76,11 @@ public class BrewTea : MonoBehaviour
             return;
         }
 
+        if((other.gameObject.name == "kitchen counter") || (other.gameObject.name == "Stairlip (4)"))
+        {
+            return;
+        }
+
         if(other.GetComponent<CupNoise>() != null)
         {
             return;

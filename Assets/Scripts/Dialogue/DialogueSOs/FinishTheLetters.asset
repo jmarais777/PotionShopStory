@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a86b7ce1503355f4cb0bb747cd4d2630, type: 3}
+  m_Name: FinishTheLetters
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueSO
+  lines:
+  - speaker: {fileID: 11400000, guid: 3319343b09712944c9bbf36eee5df2e4, type: 2}
+    text: 'I can see you''re pretty busy there. Don''t worry, you can deal with these
+      letters when you''re done.
+
+'
+    voicelineClip: {fileID: 8300000, guid: ab87085b18a7f374cb4e920fc4611b49, type: 3}
+  nextconvo: []
