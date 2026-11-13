@@ -15,5 +15,5 @@ MonoBehaviour:
   lines:
   - speaker: {fileID: 11400000, guid: 9bfa81a66ad010b499e1510a12b00410, type: 2}
     text: "Hmm\u2026 not quite right\u2026 Not to worry, you can begin again."
-    voicelineClip: {fileID: 0}
+    voicelineClip: {fileID: 8300000, guid: 662a4df4234399747a85abc88b74127a, type: 3}
   nextconvo: []

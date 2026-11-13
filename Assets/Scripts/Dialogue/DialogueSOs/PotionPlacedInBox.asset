@@ -16,15 +16,15 @@ MonoBehaviour:
   - speaker: {fileID: 11400000, guid: 37b8dbe7a026ab442a66fd0684724826, type: 2}
     text: "An alchemist\u2019s job does not end at brewery, we must tend to our patient\u2019s
       needs first and foremost. It is why we keep the shop stocked."
-    voicelineClip: {fileID: 0}
+    voicelineClip: {fileID: 8300000, guid: 4c2b5bc98377de9408ca23e45cf46bc8, type: 3}
   - speaker: {fileID: 11400000, guid: 37b8dbe7a026ab442a66fd0684724826, type: 2}
     text: It would be so easy to simply make potions on demand, but what happens
       in an emergency? Can they wait for us to prepare our potions?
-    voicelineClip: {fileID: 0}
+    voicelineClip: {fileID: 8300000, guid: 935cdedc787479747b722ee79a4e7737, type: 3}
   - speaker: {fileID: 11400000, guid: 9bfa81a66ad010b499e1510a12b00410, type: 2}
     text: I think not.
-    voicelineClip: {fileID: 0}
+    voicelineClip: {fileID: 8300000, guid: 4e8ecbd6dcec2484cb5f592b5de527ad, type: 3}
   - speaker: {fileID: 11400000, guid: 37b8dbe7a026ab442a66fd0684724826, type: 2}
     text: "Please use our stock to fulfill our patient\u2019s mail orders."
-    voicelineClip: {fileID: 0}
+    voicelineClip: {fileID: 8300000, guid: 08d1383873750454684200dbe9c27c4b, type: 3}
   nextconvo: []

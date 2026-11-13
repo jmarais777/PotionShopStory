@@ -15,13 +15,13 @@ MonoBehaviour:
   lines:
   - speaker: {fileID: 11400000, guid: 37b8dbe7a026ab442a66fd0684724826, type: 2}
     text: Sylvan, would you be a dear and make me one of your lovely cups of tea?
-    voicelineClip: {fileID: 0}
+    voicelineClip: {fileID: 8300000, guid: 017fda7ad6047b0459e3e64e6db5bc5f, type: 3}
   - speaker: {fileID: 11400000, guid: f1649f4c6e594e54e8842fea9dd6820c, type: 2}
     text: Two sugars?
     voicelineClip: {fileID: 0}
   - speaker: {fileID: 11400000, guid: 37b8dbe7a026ab442a66fd0684724826, type: 2}
     text: Mhmm... Yes. Two sugars if you will.
-    voicelineClip: {fileID: 0}
+    voicelineClip: {fileID: 8300000, guid: 7aac457ad123124478bd61bcea61ff3b, type: 3}
   - speaker: {fileID: 11400000, guid: 7ee7068f42ab6da40ad5e1965fda60cc, type: 2}
     text: One Sylvan special coming right up!
     voicelineClip: {fileID: 0}

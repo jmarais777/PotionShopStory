@@ -15,9 +15,9 @@ MonoBehaviour:
   lines:
   - speaker: {fileID: 11400000, guid: 408169d272af9c94995972c42d7af457, type: 2}
     text: Most excellent, Sylvan. A wonderful first potion.
-    voicelineClip: {fileID: 0}
+    voicelineClip: {fileID: 8300000, guid: d209034301e779e468c693c392173a40, type: 3}
   - speaker: {fileID: 11400000, guid: 408169d272af9c94995972c42d7af457, type: 2}
     text: For the moment Sylvan, you may leave the Potion of Soothing in the Outgoing
       crate.
-    voicelineClip: {fileID: 0}
+    voicelineClip: {fileID: 8300000, guid: 901f2f85bc6a206449615b103f007751, type: 3}
   nextconvo: []

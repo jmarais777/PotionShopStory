@@ -16,19 +16,19 @@ MonoBehaviour:
   - speaker: {fileID: 11400000, guid: 37b8dbe7a026ab442a66fd0684724826, type: 2}
     text: Now, how do you feel? Brewing your first potion is the first proper step
       toward becoming a true alchemist.
-    voicelineClip: {fileID: 0}
+    voicelineClip: {fileID: 8300000, guid: 8ed5ee6a7bf84a449a991efead09884d, type: 3}
   - speaker: {fileID: 11400000, guid: 7ee7068f42ab6da40ad5e1965fda60cc, type: 2}
     text: "Ready as I\u2019ll ever be! I\u2019m nervous, but excited!"
     voicelineClip: {fileID: 0}
   - speaker: {fileID: 11400000, guid: 37b8dbe7a026ab442a66fd0684724826, type: 2}
     text: Excellent, excellent. Shall we begin then?
-    voicelineClip: {fileID: 0}
+    voicelineClip: {fileID: 8300000, guid: 224338184be9d2643941dc70850d67ac, type: 3}
   - speaker: {fileID: 11400000, guid: 408169d272af9c94995972c42d7af457, type: 2}
     text: Something nice and simple should do for your first potion, I think. A potion
       of Soothing perhaps?
-    voicelineClip: {fileID: 0}
+    voicelineClip: {fileID: 8300000, guid: cb020e49bcf721b40a2258fb414e5b42, type: 3}
   - speaker: {fileID: 11400000, guid: 9bfa81a66ad010b499e1510a12b00410, type: 2}
     text: "\u2026 Yes\u2026 I think that will do excellently. Please do take a look
       at the recipe, it should\u2026 (Finger snapping sound) be the open page-"
-    voicelineClip: {fileID: 0}
+    voicelineClip: {fileID: 8300000, guid: 121db805bb65693428fab73e34bc9c8d, type: 3}
   nextconvo: []
