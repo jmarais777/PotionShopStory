@@ -8,6 +8,7 @@ public class PickUpObject : MonoBehaviour
     }
     public void PickUp(Transform holdPoint)
     {
+        rb.isKinematic = true;  // to fix spinning issues
         rb.useGravity = false;
         rb.linearVelocity = Vector3.zero;
         rb.angularVelocity = Vector3.zero;
@@ -16,6 +17,7 @@ public class PickUpObject : MonoBehaviour
     }
     public void Drop()
     {
+        rb.isKinematic = false;
         rb.useGravity = true;
         transform.SetParent(null);
     }

@@ -75,4 +75,18 @@ MonoBehaviour:
       you. You have no idea how much you\u2019re saving my tail feathers here. I
       won\u2019t forget this, honest."
     voicelineClip: {fileID: 8300000, guid: 24088e7a3cbfb05469a391e1724812ed, type: 3}
+  - speaker: {fileID: 11400000, guid: ac61823061226c34786b84997c05a799, type: 2}
+    text: '[The sound of a cup spilling]'
+    voicelineClip: {fileID: 8300000, guid: 5bcc4f3b7b274a2479add8d30d4075ce, type: 3}
+  - speaker: {fileID: 11400000, guid: 9bfa81a66ad010b499e1510a12b00410, type: 2}
+    text: Oh dear... I seem to have spilled your lovely tea, Sylvan.
+    voicelineClip: {fileID: 8300000, guid: 2224eff2e868cd34baf92edc9aabbd28, type: 3}
+  - speaker: {fileID: 11400000, guid: f1649f4c6e594e54e8842fea9dd6820c, type: 2}
+    text: Don't even sweat it, Master Augi, I'll get the mop from the supply closet.
+    voicelineClip: {fileID: 8300000, guid: 52d15ee566a7f304db13f1e3dd48effb, type: 3}
+  - speaker: {fileID: 11400000, guid: 7ee7068f42ab6da40ad5e1965fda60cc, type: 2}
+    text: Hehe... Between you and me, this happens more often than you'd think...
+      Short arms... Anyhow, I gotta go handle that cleanup. I'll see you around,
+      Edwin!
+    voicelineClip: {fileID: 8300000, guid: ad6b9bfcc873c20448047d17e62542a0, type: 3}
   nextconvo: []

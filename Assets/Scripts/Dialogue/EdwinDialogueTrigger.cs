@@ -3,12 +3,16 @@ using UnityEngine;
 public class EdwinDialogueTrigger : MonoBehaviour
 {
     [SerializeField] public GameObject potionOfSoothing; // the actual potion object
+    
+    [SerializeField] public GameObject SpilledTea; // to activate the spilled tea
+    [SerializeField] public GameObject FallenMug; // to activate the fallen mug
+    [SerializeField] public GameObject BrewedTea; // to deactivate the normal mug
 
     [SerializeField] public DialogueTrigger potionComplete; // the dialogue trigger for if the potion was completed
     [SerializeField] public DialogueTrigger potionInProgress; // the dialogue trigger for if the potion is not made yet
 
     bool canTrigger = true;
-    
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -31,6 +35,9 @@ public class EdwinDialogueTrigger : MonoBehaviour
         if (potionOfSoothing.activeInHierarchy)
         {
             potionComplete.Play();
+            SpilledTea.SetActive(true);
+            FallenMug.SetActive(true);
+            BrewedTea.SetActive(false);
         } 
         else
         {

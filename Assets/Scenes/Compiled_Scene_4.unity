@@ -53130,6 +53130,77 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 71441057}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &72875851
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 72875854}
+  - component: {fileID: 72875853}
+  - component: {fileID: 72875852}
+  m_Layer: 0
+  m_Name: PutMyTeaHereTrigger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &72875852
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 72875851}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1187c98b201488245ae1e119122c0ea4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueTrigger
+  dialogue: {fileID: 11400000, guid: 6e478438782e878419726ad54ec9dc00, type: 2}
+  playOnStart: 0
+  playOnTriggerEnter: 1
+  playerTag: Player
+  playOnce: 1
+--- !u!65 &72875853
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 72875851}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.8218842, y: 1, z: 1}
+  m_Center: {x: -0.26597977, y: 0, z: 0}
+--- !u!4 &72875854
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 72875851}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 21.44, y: 0, z: -1.43}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &72928572
 GameObject:
   m_ObjectHideFlags: 0
@@ -106437,7 +106508,7 @@ GameObject:
   m_Icon: {fileID: 4422084297763085224, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!54 &249601019
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -429409,6 +429480,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EdwinDialogueTrigger
   potionOfSoothing: {fileID: 537296361}
+  SpilledTea: {fileID: 1245227334}
+  FallenMug: {fileID: 249601018}
+  BrewedTea: {fileID: 459828164}
   potionComplete: {fileID: 1532168776}
   potionInProgress: {fileID: 713570895}
 --- !u!65 &1197771177
@@ -439265,6 +439339,11 @@ Mesh:
       - serializedVersion: 1
         m_IndexStart: 0
         m_IndexCount: 0
+--- !u!1 &1245227334 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 23c6394f5710ca041a7fac73b5304f9b, type: 3}
+  m_PrefabInstance: {fileID: 1283209090}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1245356718
 GameObject:
   m_ObjectHideFlags: 0
@@ -446142,6 +446221,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 23c6394f5710ca041a7fac73b5304f9b, type: 3}
       propertyPath: m_Name
       value: TeaSpill
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 23c6394f5710ca041a7fac73b5304f9b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -454895,8 +454978,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2.868658, y: 0.42044142, z: 3.8972654}
-  m_Center: {x: 2.1194391, y: 0.103538886, z: -7.561958}
+  m_Size: {x: 2.0162601, y: 0.42044142, z: 4.1983604}
+  m_Center: {x: 1.6932402, y: 0.103538886, z: -7.4114094}
 --- !u!4 &1329717610
 Transform:
   m_ObjectHideFlags: 0
@@ -518679,7 +518762,13 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: ed29c2076b864104d95d4ec65aaaeaf4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1985338685}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: ed29c2076b864104d95d4ec65aaaeaf4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1985338686}
   m_SourcePrefab: {fileID: 100100000, guid: ed29c2076b864104d95d4ec65aaaeaf4, type: 3}
 --- !u!4 &1622713912 stripped
 Transform:
@@ -653427,6 +653516,49 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1984714868}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1985338682 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: ed29c2076b864104d95d4ec65aaaeaf4, type: 3}
+  m_PrefabInstance: {fileID: 1622713911}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1985338685
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1985338682}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1187c98b201488245ae1e119122c0ea4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueTrigger
+  dialogue: {fileID: 11400000, guid: fa092e63e7cbab94fb68ca7e06f04fca, type: 2}
+  playOnStart: 0
+  playOnTriggerEnter: 1
+  playerTag: Player
+  playOnce: 1
+--- !u!65 &1985338686
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1985338682}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.058002003, y: 0.038796447, z: 0.07243399}
+  m_Center: {x: -0.020016896, y: 0.009877615, z: 0.000001243322}
 --- !u!43 &1987488533
 Mesh:
   m_ObjectHideFlags: 0
@@ -717451,6 +717583,7 @@ SceneRoots:
   - {fileID: 1021826859}
   - {fileID: 562657290}
   - {fileID: 1329717610}
+  - {fileID: 72875854}
   - {fileID: 291329135}
   - {fileID: 548122399}
   - {fileID: 1842156366}
