@@ -37,6 +37,11 @@ public class FridgeOpen : MonoBehaviour
     [SerializeField] private Animator doorAnimator;
     [SerializeField] private Camera playerCamera;
 
+    [Header("Door Audio")]
+    [SerializeField] private AudioSource doorAudioSource;
+    [SerializeField] private AudioClip doorOpenClip;
+    [SerializeField] private AudioClip doorCloseClip;
+
     private static readonly int IsOpenHash =
     Animator.StringToHash("IsOpen");
 
@@ -54,46 +59,6 @@ public class FridgeOpen : MonoBehaviour
         }
     }
 
-   // private void Update()
-    //{
-       // if(Mouse.current == null)
-      //  {
-           // Debug.Log("Mouse not detected");
-          //  return;
-
-       // }
-       // if(!Mouse.current.leftButton.wasPressedThisFrame)
-       // {
-       //     return;
-       // }
-      //  Debug.Log("Mouse click detected");
-
-      //  if(playerCamera == null || doorAnimator == null)
-      //  {
-       //     Debug.Log("Camera or animator is missing");
-       //     return;
-      //  }
-
-       // Ray ray = playerCamera.ScreenPointToRay(
-      //      Mouse.current.position.ReadValue()
-      //  );
-
-       // if(Physics.Raycast(ray, out RaycastHit hit))
-      //  {
-           // Debug.Log("Raycast hit " + hit.transform.name);
-
-           // if(hit.transform == transform || hit.transform.IsChildOf(transform))
-           // {
-             //   Debug.Log("Door is hit");
-             //   ToggleDoor();
-           // }
-        //}
-        //else
-       // {
-          //  Debug.Log("Raycast missed");
-        
-       // }
-    //}
 
 
     private void Update()
@@ -128,5 +93,19 @@ public class FridgeOpen : MonoBehaviour
         isOpen = !isOpen;
 
         doorAnimator.SetBool(IsOpenHash, isOpen); //tells the Animator which animation to play
+
+        if(doorAudioSource != null)
+        {
+            if(isOpen)
+            {
+                doorAudioSource.PlayOneShot(doorOpenClip);
+            }
+            else
+            {
+                doorAudioSource.PlayOneShot(doorCloseClip);
+
+            }
+        }
+        //doorOpen.Play();
     }
 }
