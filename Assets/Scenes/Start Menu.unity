@@ -875,7 +875,6 @@ GameObject:
   - component: {fileID: 790495702}
   - component: {fileID: 790495701}
   - component: {fileID: 790495704}
-  - component: {fileID: 790495703}
   m_Layer: 5
   m_Name: HeadphonesSymbol
   m_TagString: Untagged
@@ -940,46 +939,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 790495699}
   m_CullTransparentMesh: 1
---- !u!114 &790495703
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 790495699}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 96ba96330280565478b598145613877e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::WakeUpScreen
-  overlay: {fileID: 790495704}
-  holdOverlay: 2.5
-  fadeDuration: 3.5
-  opacity:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  introDialogue: {fileID: 0}
 --- !u!225 &790495704
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -1004,6 +963,8 @@ GameObject:
   - component: {fileID: 797915686}
   - component: {fileID: 797915685}
   - component: {fileID: 797915684}
+  - component: {fileID: 797915689}
+  - component: {fileID: 797915688}
   m_Layer: 5
   m_Name: UI - HeadphonesMessage
   m_TagString: Untagged
@@ -1096,6 +1057,33 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &797915688
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 797915683}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70febbdad2280e24ba93d30066d32309, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HeadphonesMessage
+  overlay: {fileID: 797915689}
+  holdOverlay: 4
+  fadeDuration: 3
+--- !u!225 &797915689
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 797915683}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &921738979
 GameObject:
   m_ObjectHideFlags: 0
@@ -1182,7 +1170,6 @@ GameObject:
   - component: {fileID: 948175713}
   - component: {fileID: 948175715}
   - component: {fileID: 948175714}
-  - component: {fileID: 948175716}
   - component: {fileID: 948175717}
   m_Layer: 5
   m_Name: Message
@@ -1310,46 +1297,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 948175712}
   m_CullTransparentMesh: 1
---- !u!114 &948175716
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 948175712}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 96ba96330280565478b598145613877e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::WakeUpScreen
-  overlay: {fileID: 948175717}
-  holdOverlay: 2
-  fadeDuration: 3
-  opacity:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  introDialogue: {fileID: 0}
 --- !u!225 &948175717
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -2591,7 +2538,6 @@ GameObject:
   - component: {fileID: 1989183949}
   - component: {fileID: 1989183948}
   - component: {fileID: 1989183947}
-  - component: {fileID: 1989183950}
   m_Layer: 5
   m_Name: Quit
   m_TagString: Untagged
@@ -2725,7 +2671,6 @@ GameObject:
   - component: {fileID: 2083556219}
   - component: {fileID: 2083556218}
   - component: {fileID: 2083556221}
-  - component: {fileID: 2083556220}
   m_Layer: 5
   m_Name: BlackOverlay
   m_TagString: Untagged
@@ -2790,46 +2735,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2083556216}
   m_CullTransparentMesh: 1
---- !u!114 &2083556220
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2083556216}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 96ba96330280565478b598145613877e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::WakeUpScreen
-  overlay: {fileID: 2083556221}
-  holdOverlay: 6
-  fadeDuration: 6
-  opacity:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  introDialogue: {fileID: 0}
 --- !u!225 &2083556221
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -2842,29 +2747,6 @@ CanvasGroup:
   m_Interactable: 0
   m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
-  m_GameObject: {fileID: 1989183945}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.EventSystems.EventTrigger
-  m_Delegates:
-  - eventID: 0
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1388136070}
-          m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
-          m_MethodName: PlayOneShot
-          m_Mode: 2
-          m_Arguments:
-            m_ObjectArgument: {fileID: 8300000, guid: 83ff40d9b3b46b44d9b6aeb1216c3426, type: 3}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
 --- !u!1 &2131401876
 GameObject:
   m_ObjectHideFlags: 0
